@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Byron Baleda — backend & business applications. Reliable software people can depend on."
+    />
+    <title>Byron Baleda — Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#home">Skip to content</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#home">byrzbal</a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="Open menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a href="#home" data-nav>Home</a>
+          <a href="#about" data-nav>About</a>
+          <a href="#projects" data-nav>Projects</a>
+          <a href="#resume" data-nav>Resume</a>
+          <a href="#contact" data-nav>Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="section hero" aria-label="Home">
+        <div class="hero-atmosphere" aria-hidden="true"></div>
+        <div class="container hero-content">
+          <p class="hero-kicker reveal">Backend &amp; business applications</p>
+          <h1 class="hero-name reveal">Byron Baleda</h1>
+          <p class="hero-pitch reveal">
+            I design and build reliable software people can depend on —
+            systems that last, not just demos that impress.
+          </p>
+          <div class="hero-actions reveal">
+            <a class="btn btn-primary" href="#projects">View projects</a>
+            <a class="btn btn-ghost" href="#contact">Contact</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="container narrow">
+          <header class="section-header reveal">
+            <p class="section-eyebrow">About</p>
+            <h2>About Me</h2>
+          </header>
+          <div class="prose reveal">
+            <p>
+              I've always believed that every problem has a solution waiting to
+              be discovered. Programming is simply the tool that turns an idea
+              into something real.
+            </p>
+            <p>
+              Throughout my career, I've specialized in building business
+              applications with a focus on backend development, APIs, and
+              databases. One lesson has consistently shaped the way I work: the
+              best solutions rarely come from writing code first. They come from
+              taking a step back, understanding the bigger picture, and designing
+              systems that are reliable, maintainable, and built to last.
+            </p>
+            <p>
+              I'm naturally quiet and pragmatic, and I prefer to let my work
+              speak for itself. Colleagues have described me as "silent but
+              effective," and I enjoy solving complex problems with simple,
+              dependable solutions rather than adding unnecessary complexity. My
+              approach is straightforward: understand the problem first, then
+              build the right solution.
+            </p>
+            <p>
+              Outside of software, I enjoy reading, learning about personal
+              finance, and traveling. When I visit a new place, I prefer
+              experiencing it like a local—exploring neighborhoods, discovering
+              family-run restaurants, and seeing how people live day to day
+              instead of following a checklist of tourist attractions. That same
+              curiosity shapes the way I approach technology: I enjoy
+              understanding how things work beneath the surface before deciding
+              how they should be built.
+            </p>
+            <p>
+              Technology will continue to evolve, but the principles I build
+              around remain the same: think long term, build with reliability in
+              mind, and create software that people can depend on.
+            </p>
+          </div>
+          <ul class="skills reveal" aria-label="Skills">
+            <li>Backend</li>
+            <li>APIs</li>
+            <li>Databases</li>
+            <li>Business applications</li>
+            <li>Kotlin</li>
+            <li>Android</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="projects" class="section section-alt">
+        <div class="container">
+          <header class="section-header reveal">
+            <p class="section-eyebrow">Work</p>
+            <h2>Projects</h2>
+            <p class="section-lede">
+              Selected work — FinDen is live; the others are placeholders while
+              more case studies are prepared.
+            </p>
+          </header>
+          <div class="project-grid">
+            <article class="project-card reveal featured">
+              <p class="project-label">Featured</p>
+              <h3>FinDen</h3>
+              <p>
+                Personal finance app for tracking accounts, spending plans, and
+                investments — available as Android and web. Built for clarity,
+                offline-first reliability, and day-to-day money decisions.
+              </p>
+              <ul class="tags">
+                <li>Kotlin</li>
+                <li>Android</li>
+                <li>React</li>
+                <li>TypeScript</li>
+              </ul>
+              <div class="project-links">
+                <a
+                  href="https://github.com/byrzbal/FinDen"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub</a
+                >
+              </div>
+            </article>
+
+            <!-- PLACEHOLDER: replace with a real project -->
+            <article class="project-card reveal">
+              <p class="project-label">Placeholder</p>
+              <h3>LedgerLink API</h3>
+              <p>
+                Fictional multi-tenant invoicing API with idempotent payments,
+                audit trails, and PostgreSQL-backed reporting for small
+                businesses.
+              </p>
+              <ul class="tags">
+                <li>Node.js</li>
+                <li>PostgreSQL</li>
+                <li>REST</li>
+              </ul>
+              <div class="project-links">
+                <span class="muted">Case study coming soon</span>
+              </div>
+            </article>
+
+            <!-- PLACEHOLDER: replace with a real project -->
+            <article class="project-card reveal">
+              <p class="project-label">Placeholder</p>
+              <h3>Harbor Ops Console</h3>
+              <p>
+                Fictional operations dashboard for scheduling warehouse jobs,
+                with role-based access and reliable background sync for field
+                teams.
+              </p>
+              <ul class="tags">
+                <li>Java</li>
+                <li>Spring</li>
+                <li>React</li>
+              </ul>
+              <div class="project-links">
+                <span class="muted">Case study coming soon</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="resume" class="section">
+        <div class="container narrow">
+          <header class="section-header reveal">
+            <p class="section-eyebrow">Experience</p>
+            <h2>Resume</h2>
+            <p class="section-lede">
+              <!-- PLACEHOLDER: replace fiction timeline with your real history -->
+              Sample timeline for layout — replace with your real roles when
+              ready.
+            </p>
+          </header>
+
+          <ol class="timeline reveal">
+            <li>
+              <p class="timeline-meta">2022 — Present · Fiction Co.</p>
+              <h3>Senior Backend Engineer</h3>
+              <p>
+                Designed APIs and data models for business workflows; focused on
+                reliability, observability, and maintainable service boundaries.
+              </p>
+            </li>
+            <li>
+              <p class="timeline-meta">2019 — 2022 · Example Systems</p>
+              <h3>Software Engineer</h3>
+              <p>
+                Built internal tools and integrations across databases and
+                services; partnered with product to ship durable features.
+              </p>
+            </li>
+            <li>
+              <p class="timeline-meta">2015 — 2019 · University</p>
+              <h3>B.S. Computer Science</h3>
+              <p>
+                Foundations in systems, databases, and software design. Replace
+                with your real education details.
+              </p>
+            </li>
+          </ol>
+
+          <!-- PLACEHOLDER: drop a real resume.pdf into assets/ then enable this link -->
+          <p class="resume-cta reveal">
+            <span class="btn btn-ghost is-disabled" aria-disabled="true"
+              >Download PDF — coming soon</span
+            >
+          </p>
+        </div>
+      </section>
+
+      <section id="contact" class="section section-alt">
+        <div class="container narrow">
+          <header class="section-header reveal">
+            <p class="section-eyebrow">Get in touch</p>
+            <h2>Contact</h2>
+            <p class="section-lede">
+              <!-- PLACEHOLDER: replace email and social URLs -->
+              Prefer email for project inquiries. Social links below are
+              placeholders until you plug in the real addresses.
+            </p>
+          </header>
+          <div class="contact-block reveal">
+            <a class="contact-email" href="mailto:hello@example.com"
+              >hello@example.com</a
+            >
+            <ul class="social-links">
+              <li>
+                <a
+                  href="https://github.com/byrzbal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/your-profile"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >LinkedIn</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="year"></span> Byron Baleda</p>
+      </div>
+    </footer>
+
+    <script src="scripts/main.js" defer></script>
+  </body>
+</html>
