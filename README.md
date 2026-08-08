@@ -1,8 +1,49 @@
 # byrzbal.github.io
 
-Personal portfolio site for [byrzbal](https://github.com/byrzbal) — static HTML/CSS/JS, served via GitHub Pages.
+Personal portfolio for [Byron Baleda](https://github.com/byrzbal) — static HTML/CSS/JS on GitHub Pages.
 
 **Live:** https://byrzbal.github.io
+
+## Structure
+
+```
+byrzbal.github.io/
+├── index.html                 # Home: hero, work, about, resume, contact
+├── projects/
+│   └── finden.html            # FinDen case study
+├── assets/
+│   ├── favicon.svg / .png     # Browser tab icon
+│   ├── apple-touch-icon.png   # iOS home-screen icon
+│   ├── og-home.png            # Social preview (home)
+│   ├── og-finden.png          # Social preview (FinDen)
+│   ├── Byron Baleda Resume.pdf
+│   ├── resume-print.html
+│   └── projects/finden/       # Screenshots + demo video
+├── scripts/main.js
+└── styles/
+    ├── main.css
+    └── themes.css
+```
+
+## Featured work
+
+**FinDen** — local-first personal finance (Android + web). Case study:
+architecture, technologies, screenshots, demo video, and live app link.
+
+- Case study: [`projects/finden.html`](projects/finden.html)
+- Live app: https://flowpilot-labs.github.io/FinDen/
+- Source: https://github.com/byrzbal/FinDen (or FlowPilot-Labs org, if that is the public repo)
+
+Two extra project cards (Client Portal, AI Automation) stay in the DOM with
+`hidden` until real case studies are ready. Remove `hidden` on those
+`<article class="project-card">` elements in `index.html` to show them.
+
+## Theme
+
+Day/night themes switch automatically by local time (day = Clean alpine `5`,
+night = Soft steel `13`). The floating theme picker is kept in the markup but
+hidden; see comments in `index.html` / `scripts/main.js` to restore manual
+picking.
 
 ## Local preview
 
@@ -16,21 +57,6 @@ python3 -m http.server 5500
 Open http://127.0.0.1:5500
 
 Or open `index.html` directly in a browser (no server).
-
-## Placeholders to replace
-
-Mark these in the HTML with `PLACEHOLDER` comments:
-
-| Item | Where | What to do |
-| --- | --- | --- |
-| Email | Contact | Done — byrzbal@gmail.com |
-| LinkedIn | Contact social links | Done — https://www.linkedin.com/in/byronbaleda/ |
-| Resume PDF | `assets/resume.pdf` + Resume CTA | Add PDF; change the disabled “coming soon” control into an `<a class="btn btn-ghost" href="assets/resume.pdf" download>` |
-| Resume timeline | `#resume` list | Replace fiction roles/education |
-| LedgerLink API | Projects card | Replace with a real project |
-| Harbor Ops Console | Projects card | Replace with a real project |
-
-FinDen is the featured real project; GitHub link points at `https://github.com/byrzbal/FinDen` (adjust if the repo path differs).
 
 ## Deploy
 

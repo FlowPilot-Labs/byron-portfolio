@@ -5,9 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="FinDen case study — personal finance app by Byron Baleda."
+      content="FinDen — local-first personal finance for accounts, spending plans, investments, and FIRE goals. Android and web by Byron Baleda."
     />
     <title>FinDen — Byron Baleda</title>
+
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="../assets/favicon.png" type="image/png" sizes="48x48" />
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Byron Baleda" />
+    <meta property="og:title" content="FinDen — Byron Baleda" />
+    <meta
+      property="og:description"
+      content="Local-first personal finance for accounts, spending plans, investments, and FIRE goals — Android and web."
+    />
+    <meta property="og:url" content="https://byrzbal.github.io/projects/finden.html" />
+    <meta property="og:image" content="https://byrzbal.github.io/assets/og-finden.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="FinDen — Byron Baleda" />
+    <meta
+      name="twitter:description"
+      content="Local-first personal finance for accounts, spending plans, investments, and FIRE goals — Android and web."
+    />
+    <meta name="twitter:image" content="https://byrzbal.github.io/assets/og-finden.png" />
+
     <script>
       try {
         /* Auto theme by local time: day=5, night=13 */
@@ -80,10 +105,9 @@
           </p>
           <h1 class="project-title reveal">FinDen</h1>
           <p class="project-summary reveal">
-            <!-- PLACEHOLDER: replace with real summary -->
-            A personal finance app for tracking accounts, spending plans, and
-            investments across Android and web — filler case study content for
-            layout while the real story is written.
+            A local-first personal finance app for accounts, spending plans,
+            investments, and FIRE goals — built for Android and web with the
+            same product model on both.
           </p>
           <div class="hero-actions reveal">
             <a
@@ -103,11 +127,11 @@
           <h2>Problem</h2>
           <div class="prose">
             <p>
-              <!-- PLACEHOLDER -->
-              Managing day-to-day money across multiple accounts often means
-              juggling spreadsheets, bank apps, and mental notes. People need a
-              clearer picture of balances, plans, and investments without
-              stitching tools together by hand.
+              Day-to-day money often lives across banks, e-wallets, credit cards,
+              investments, and mental notes. Spreadsheets and separate apps make
+              it hard to see net worth, cash flow, and progress toward goals in
+              one place — especially when you want something private and usable
+              offline.
             </p>
           </div>
         </div>
@@ -118,11 +142,11 @@
           <h2>Solution</h2>
           <div class="prose">
             <p>
-              <!-- PLACEHOLDER -->
-              FinDen brings accounts, spending plans, and investments into one
-              calm workspace. The focus is reliable offline-first tracking,
-              simple money decisions, and a consistent experience on phone and
-              web.
+              FinDen is a calm financial den: track asset and liability accounts,
+              income and expenses, transfers, a monthly spending plan, investment
+              holdings, bills, and long-term goals including FIRE. Android and
+              web stay in functional parity, keep data on-device by default, and
+              share design tokens so the experience feels like one product.
             </p>
           </div>
         </div>
@@ -133,16 +157,85 @@
           <h2>Architecture</h2>
           <div class="prose">
             <p>
-              <!-- PLACEHOLDER -->
-              High-level shape (filler): a shared domain model for accounts and
-              transactions, local persistence for offline use, and a web client
-              that mirrors the mobile flows. Sync and reporting details will be
-              documented here later.
+              FinDen is a local-first monorepo with Android and web clients that
+              share one product model. Both cover accounts, transactions,
+              transfers, spending plans, investments, goals (including FIRE),
+              bills, and settings with backup/import. Domain logic lives in each
+              client so net worth, cash flow, and plan utilization stay aligned.
+            </p>
+            <p>
+              Android persists with Room behind a repository/ViewModel stack; web
+              uses Zustand with localStorage. No sign-in is required for core
+              use. Shared <code>tokens.json</code> generates Android colors and
+              web CSS. Vite builds deploy to GitHub Pages via Actions. An ASP.NET
+              Core API is reserved for future sync; today everything runs
+              client-side.
             </p>
           </div>
-          <div class="arch-placeholder" aria-hidden="true">
-            Architecture diagram placeholder
-          </div>
+
+          <figure class="arch-diagram" aria-label="FinDen architecture overview">
+            <div class="arch-layer">
+              <p class="arch-layer-label">Clients</p>
+              <div class="arch-row arch-row-2">
+                <div class="arch-node">
+                  <strong>Android</strong>
+                  <span>Kotlin · Jetpack Compose · Material 3</span>
+                  <span>Navigation Compose · ViewModel</span>
+                </div>
+                <div class="arch-node">
+                  <strong>Web</strong>
+                  <span>React 19 · TypeScript · Vite</span>
+                  <span>React Router · Zustand</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="arch-flow" aria-hidden="true"></div>
+
+            <div class="arch-layer arch-layer-accent">
+              <p class="arch-layer-label">Shared product domain</p>
+              <div class="arch-node arch-node-wide">
+                <strong>Accounts · Transactions · Transfers · Spending Plan</strong>
+                <span>Investments · Goals / FIRE · Bills · Settings</span>
+              </div>
+            </div>
+
+            <div class="arch-flow" aria-hidden="true"></div>
+
+            <div class="arch-layer">
+              <p class="arch-layer-label">Local-first storage</p>
+              <div class="arch-row arch-row-2">
+                <div class="arch-node">
+                  <strong>Room</strong>
+                  <span>SQLite on Android</span>
+                </div>
+                <div class="arch-node">
+                  <strong>localStorage</strong>
+                  <span>Browser persistence on web</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="arch-flow" aria-hidden="true"></div>
+
+            <div class="arch-layer">
+              <p class="arch-layer-label">Shared design · Delivery · Planned</p>
+              <div class="arch-row arch-row-3">
+                <div class="arch-node">
+                  <strong>Design tokens</strong>
+                  <span>tokens.json → Color.kt + tokens.css</span>
+                </div>
+                <div class="arch-node">
+                  <strong>GitHub Pages</strong>
+                  <span>Actions build &amp; deploy web</span>
+                </div>
+                <div class="arch-node arch-node-muted">
+                  <strong>ASP.NET Core API</strong>
+                  <span>Future sync backend</span>
+                </div>
+              </div>
+            </div>
+          </figure>
         </div>
       </section>
 
@@ -151,31 +244,69 @@
           <h2>Technologies</h2>
           <ul class="skills">
             <li>Kotlin</li>
-            <li>Android</li>
+            <li>Jetpack Compose</li>
+            <li>Material 3</li>
+            <li>Room</li>
+            <li>ViewModel</li>
             <li>React</li>
             <li>TypeScript</li>
             <li>Vite</li>
-            <li>Local storage / Room (TBD)</li>
+            <li>Zustand</li>
+            <li>localStorage</li>
+            <li>Design tokens</li>
+            <li>GitHub Actions</li>
+            <li>GitHub Pages</li>
+            <li>ASP.NET Core (planned)</li>
           </ul>
         </div>
       </section>
 
       <section class="section section-alt">
-        <div class="container narrow case-block reveal">
+        <div class="container case-block reveal">
           <h2>Screenshots</h2>
           <p class="section-lede">
-            <!-- PLACEHOLDER: drop real images into assets/projects/finden/ -->
-            Screenshot placeholders for now.
+            Home, spending plan, investments, and goals from the live web app.
           </p>
           <div class="shot-grid">
-            <figure class="shot-placeholder">
-              <span>Home dashboard</span>
+            <figure class="shot">
+              <img
+                src="../assets/projects/finden/home.png"
+                alt="FinDen home dashboard showing net worth, growth chart, and month at a glance"
+                width="773"
+                height="915"
+                loading="lazy"
+              />
+              <figcaption>Home dashboard</figcaption>
             </figure>
-            <figure class="shot-placeholder">
-              <span>Spending plan</span>
+            <figure class="shot">
+              <img
+                src="../assets/projects/finden/plan.png"
+                alt="FinDen spending plan with category donut chart and budget progress"
+                width="774"
+                height="914"
+                loading="lazy"
+              />
+              <figcaption>Spending plan</figcaption>
             </figure>
-            <figure class="shot-placeholder">
-              <span>Investments</span>
+            <figure class="shot">
+              <img
+                src="../assets/projects/finden/invest.png"
+                alt="FinDen investments screen with portfolio chart and allocation donut"
+                width="758"
+                height="915"
+                loading="lazy"
+              />
+              <figcaption>Investments</figcaption>
+            </figure>
+            <figure class="shot">
+              <img
+                src="../assets/projects/finden/goals.png"
+                alt="FinDen goals screen with FIRE progress and individual goal trackers"
+                width="773"
+                height="919"
+                loading="lazy"
+              />
+              <figcaption>Goals &amp; FIRE</figcaption>
             </figure>
           </div>
         </div>
@@ -185,11 +316,22 @@
         <div class="container narrow case-block reveal">
           <h2>Demo video</h2>
           <p class="section-lede">
-            <!-- PLACEHOLDER: replace with YouTube/Vimeo embed -->
-            Demo embed placeholder — swap in a real video when ready.
+            A quick walkthrough of FinDen across home, plan, invest, and goals.
           </p>
-          <div class="video-placeholder" role="img" aria-label="Demo video placeholder">
-            Demo video coming soon
+          <div class="demo-video">
+            <video
+              controls
+              playsinline
+              preload="metadata"
+              poster="../assets/projects/finden/home.png"
+            >
+              <source
+                src="../assets/projects/finden/FinDenDemo.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support embedded video.
+              <a href="../assets/projects/finden/FinDenDemo.mp4">Download the demo</a>.
+            </video>
           </div>
         </div>
       </section>
