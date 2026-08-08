@@ -776,16 +776,16 @@ a:hover {
   border-left: 1px solid var(--line);
 }
 
-.timeline li {
+.timeline > li {
   position: relative;
   padding: 0 0 2rem 1.4rem;
 }
 
-.timeline li:last-child {
+.timeline > li:last-child {
   padding-bottom: 0;
 }
 
-.timeline li::before {
+.timeline > li::before {
   content: "";
   position: absolute;
   left: -5px;
@@ -813,6 +813,22 @@ a:hover {
 .timeline p:last-child {
   margin: 0;
   color: var(--text-muted);
+}
+
+.timeline-bullets {
+  margin: 0.35rem 0 0;
+  padding: 0 0 0 1.15rem;
+  color: var(--text-muted);
+}
+
+.timeline-bullets li {
+  margin: 0 0 0.55rem;
+  padding: 0;
+  line-height: 1.55;
+}
+
+.timeline-bullets li:last-child {
+  margin-bottom: 0;
 }
 
 .contact-block {
