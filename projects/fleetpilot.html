@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="FleetPilot — local-first trucking management prototype for dispatch, documents, and role portals. Angular and IndexedDB by Byron Baleda."
+    />
+    <title>FleetPilot — Byron Baleda</title>
+
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="../assets/favicon.png" type="image/png" sizes="48x48" />
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Byron Baleda" />
+    <meta property="og:title" content="FleetPilot — Byron Baleda" />
+    <meta
+      property="og:description"
+      content="Local-first trucking management prototype for dispatching loads, delivery documents, and role portals — Angular and IndexedDB."
+    />
+    <meta
+      property="og:url"
+      content="https://byrzbal.github.io/projects/fleetpilot.html"
+    />
+
+    <script>
+      try {
+        /* Auto theme by local time: day=5, night=13 */
+        var h = new Date().getHours();
+        var t = h >= 6 && h < 18 ? "5" : "13";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/themes.css" />
+  </head>
+  <body>
+    <!-- Theme picker kept in DOM but hidden via CSS. See index.html notes to restore. -->
+    <aside class="theme-picker" aria-label="Temporary theme switcher" hidden>
+      <span class="theme-picker-label">Theme</span>
+      <button type="button" data-theme-pick="1" title="1 Coastal slate">1</button>
+      <button type="button" data-theme-pick="2" title="2 Paper studio">2</button>
+      <button type="button" data-theme-pick="3" title="3 Sand &amp; forest">3</button>
+      <button type="button" data-theme-pick="4" title="4 Mist blueprint">4</button>
+      <button type="button" data-theme-pick="5" title="5 Clean alpine">5</button>
+      <button type="button" data-theme-pick="6" title="6 Fog harbor (gradient)">6</button>
+      <button type="button" data-theme-pick="7" title="7 Clay atelier">7</button>
+      <button type="button" data-theme-pick="8" title="8 Sage ledger">8</button>
+      <button type="button" data-theme-pick="9" title="9 Dusk stone">9</button>
+      <button type="button" data-theme-pick="10" title="10 Parchment desk">10</button>
+      <button type="button" data-theme-pick="11" title="11 Soft harbor (soft dark)">11</button>
+      <button type="button" data-theme-pick="12" title="12 Soft ember (soft dark)">12</button>
+      <button type="button" data-theme-pick="13" title="13 Soft steel (soft dark)">13</button>
+      <button type="button" data-theme-pick="14" title="14 Soft moss (soft dark)">14</button>
+      <button type="button" data-theme-pick="15" title="15 Soft graphite (soft dark)">15</button>
+    </aside>
+
+    <a class="skip-link" href="#project">Skip to content</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../index.html">Byron Baleda</a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="Open menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a href="../index.html#home">Home</a>
+          <a href="../index.html#work">Work</a>
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#resume">Resume</a>
+          <a href="../index.html#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="project" class="project-page">
+      <section class="section project-hero">
+        <div class="container narrow">
+          <p class="section-eyebrow reveal">
+            <a class="back-link" href="../index.html#work">← Selected work</a>
+          </p>
+          <h1 class="project-title reveal">FleetPilot</h1>
+          <p class="project-summary reveal">
+            A local-first trucking management prototype for dispatching loads,
+            managing delivery documents, and coordinating owners, dispatchers,
+            drivers, and customers — built for the web with Angular and
+            IndexedDB.
+          </p>
+          <div class="hero-actions reveal">
+            <a
+              class="btn btn-primary"
+              href="https://flowpilot-labs.github.io/fleetpilot/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Open live app</a
+            >
+            <!-- PLACEHOLDER: replace with real demo video URL -->
+            <a
+              class="btn btn-ghost"
+              href="https://example.com/fleetpilot-demo"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Demo video</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container narrow case-block reveal">
+          <h2>Problem</h2>
+          <div class="prose">
+            <p>
+              Small trucking operations often coordinate loads, drivers, delivery
+              updates, and paperwork across calls, chat messages, spreadsheets,
+              and paper documents. That makes it difficult to see where a load
+              is, whether proof of delivery has been submitted, and which driver
+              settlements are still pending.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow case-block reveal">
+          <h2>Solution</h2>
+          <div class="prose">
+            <p>
+              FleetPilot brings the core shipment workflow into one focused web
+              app. Dispatchers create and assign loads, move shipments through a
+              visual dispatch board, and manage Rate Confirmations, Bills of
+              Lading, and Proofs of Delivery. Owners get a clear operational view
+              and can review simple driver settlements, while drivers and
+              customers have role-specific portals for the information they need.
+              Built as a local-first Angular prototype, FleetPilot stores demo
+              data in IndexedDB so it remains usable without a backend.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container narrow case-block reveal">
+          <h2>Architecture</h2>
+          <div class="prose">
+            <p>
+              FleetPilot is a local-first Angular SPA with four role portals —
+              owner, dispatcher, driver, and customer — sharing one shipment
+              domain. Loads, drivers, vehicles, customers, documents (rate
+              confirmations, bills of lading, proofs of delivery), settlements,
+              and activity all live in the same browser store so every persona
+              sees a consistent operational picture.
+            </p>
+            <p>
+              Dispatchers create and assign loads, then move them on a visual
+              board with Material CDK drag-and-drop and status rules. Dexie
+              wraps IndexedDB for persistence and seeds demo personas, loads,
+              documents, and settlements on first launch — no sign-in backend
+              required. Chart.js powers owner/dispatcher dashboard metrics. The
+              app deploys to GitHub Pages; an ASP.NET Core API is reserved for
+              future sync while the prototype stays fully client-side.
+            </p>
+          </div>
+
+          <figure class="arch-diagram" aria-label="FleetPilot architecture overview">
+            <div class="arch-layer">
+              <p class="arch-layer-label">Role portals</p>
+              <div class="arch-row arch-row-2">
+                <div class="arch-node">
+                  <strong>Owner</strong>
+                  <span>Dashboard · Driver settlements</span>
+                  <span>Operational KPIs · Activity</span>
+                </div>
+                <div class="arch-node">
+                  <strong>Dispatcher</strong>
+                  <span>Loads · Dispatch board</span>
+                  <span>Documents · Assignments</span>
+                </div>
+                <div class="arch-node">
+                  <strong>Driver</strong>
+                  <span>My Loads · Documents</span>
+                  <span>POD upload · Status updates</span>
+                </div>
+                <div class="arch-node">
+                  <strong>Customer</strong>
+                  <span>My Shipments · Documents</span>
+                  <span>Delivery visibility</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="arch-flow" aria-hidden="true"></div>
+
+            <div class="arch-layer arch-layer-accent">
+              <p class="arch-layer-label">Shared product domain</p>
+              <div class="arch-node arch-node-wide">
+                <strong>Loads · Drivers · Vehicles · Customers</strong>
+                <span
+                  >Documents (RC · BOL · POD) · Settlements · Activity ·
+                  Users</span
+                >
+              </div>
+            </div>
+
+            <div class="arch-flow" aria-hidden="true"></div>
+
+            <div class="arch-layer">
+              <p class="arch-layer-label">Local-first storage</p>
+              <div class="arch-row arch-row-2">
+                <div class="arch-node">
+                  <strong>Dexie</strong>
+                  <span>IndexedDB in the browser</span>
+                </div>
+                <div class="arch-node">
+                  <strong>Demo seed</strong>
+                  <span>Personas, loads, docs, settlements</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="arch-flow" aria-hidden="true"></div>
+
+            <div class="arch-layer">
+              <p class="arch-layer-label">Shell · Delivery · Planned</p>
+              <div class="arch-row arch-row-3">
+                <div class="arch-node">
+                  <strong>Angular Material</strong>
+                  <span>Shell · CDK drag-and-drop · Charts</span>
+                </div>
+                <div class="arch-node">
+                  <strong>GitHub Pages</strong>
+                  <span>angular-cli-ghpages deploy</span>
+                </div>
+                <div class="arch-node arch-node-muted">
+                  <strong>ASP.NET Core API</strong>
+                  <span>Future sync backend</span>
+                </div>
+              </div>
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow case-block reveal">
+          <h2>Technologies</h2>
+          <ul class="skills">
+            <li>Angular</li>
+            <li>TypeScript</li>
+            <li>Angular Material</li>
+            <li>CDK Drag and Drop</li>
+            <li>Dexie</li>
+            <li>IndexedDB</li>
+            <li>Chart.js</li>
+            <li>ng2-charts</li>
+            <li>RxJS</li>
+            <li>GitHub Pages</li>
+            <li>ASP.NET Core (planned)</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container case-block reveal">
+          <h2>Screenshots</h2>
+          <p class="section-lede">
+            Dispatch board, owner dashboard, and driver and customer portals from
+            the live app.
+          </p>
+          <div class="shot-grid">
+            <figure class="shot">
+              <img
+                src="../assets/projects/fleetpilot/dispatch-board.png"
+                alt="FleetPilot dispatch board with Pending, Assigned, Picked Up, In Transit, and Delivered columns"
+                width="1024"
+                height="503"
+                loading="lazy"
+              />
+              <figcaption>Dispatch board</figcaption>
+            </figure>
+            <figure class="shot">
+              <img
+                src="../assets/projects/fleetpilot/owner-dashboard.png"
+                alt="FleetPilot owner dashboard with KPIs, upcoming deliveries, activity feed, and settlement summary"
+                width="1024"
+                height="508"
+                loading="lazy"
+              />
+              <figcaption>Owner dashboard</figcaption>
+            </figure>
+            <figure class="shot">
+              <img
+                src="../assets/projects/fleetpilot/driver-portal.png"
+                alt="FleetPilot driver portal My Loads with status actions and Upload POD"
+                width="1024"
+                height="491"
+                loading="lazy"
+              />
+              <figcaption>Driver portal</figcaption>
+            </figure>
+            <figure class="shot">
+              <img
+                src="../assets/projects/fleetpilot/customer-portal.png"
+                alt="FleetPilot customer portal My Shipments table with routes and status badges"
+                width="1024"
+                height="496"
+                loading="lazy"
+              />
+              <figcaption>Customer portal</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="demo" class="section">
+        <div class="container narrow case-block reveal">
+          <h2>Demo video</h2>
+          <p class="section-lede">
+            <!-- PLACEHOLDER: replace with real demo embed or file -->
+            Temporary link until the real demo is ready.
+          </p>
+          <p>
+            <a
+              class="btn btn-ghost"
+              href="https://example.com/fleetpilot-demo"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Watch demo video</a
+            >
+          </p>
+          <div class="video-placeholder" role="img" aria-label="Demo video placeholder">
+            Demo video coming soon
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container narrow case-block reveal">
+          <h2>Live app</h2>
+          <p class="section-lede">
+            Try the local-first prototype in the browser — pick a persona on
+            login to explore owner, dispatcher, driver, and customer portals.
+          </p>
+          <p>
+            <a
+              class="btn btn-primary"
+              href="https://flowpilot-labs.github.io/fleetpilot/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Open live app</a
+            >
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="year"></span> Byron Baleda</p>
+      </div>
+    </footer>
+
+    <script src="../scripts/main.js" defer></script>
+  </body>
+</html>
