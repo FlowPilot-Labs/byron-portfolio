@@ -5,9 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Byron Baleda — backend & business applications. Reliable software people can depend on."
+      content="Byron Baleda — modern business applications that turn complex processes into reliable, maintainable software."
     />
     <title>Byron Baleda — Portfolio</title>
+    <script>
+      try {
+        /* Auto theme by local time: day=5, night=13 */
+        var h = new Date().getHours();
+        var t = h >= 6 && h < 18 ? "5" : "13";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,13 +23,35 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/themes.css" />
   </head>
   <body>
+    <!-- Theme picker kept in DOM but hidden via CSS (.theme-picker { display:none }).
+         To show again later: remove the hide rule in styles/themes.css and set AUTO_THEME=false in scripts/main.js -->
+    <aside class="theme-picker" aria-label="Temporary theme switcher" hidden>
+      <span class="theme-picker-label">Theme</span>
+      <button type="button" data-theme-pick="1" title="1 Coastal slate">1</button>
+      <button type="button" data-theme-pick="2" title="2 Paper studio">2</button>
+      <button type="button" data-theme-pick="3" title="3 Sand &amp; forest">3</button>
+      <button type="button" data-theme-pick="4" title="4 Mist blueprint">4</button>
+      <button type="button" data-theme-pick="5" title="5 Clean alpine">5</button>
+      <button type="button" data-theme-pick="6" title="6 Fog harbor (gradient)">6</button>
+      <button type="button" data-theme-pick="7" title="7 Clay atelier">7</button>
+      <button type="button" data-theme-pick="8" title="8 Sage ledger">8</button>
+      <button type="button" data-theme-pick="9" title="9 Dusk stone">9</button>
+      <button type="button" data-theme-pick="10" title="10 Parchment desk">10</button>
+      <button type="button" data-theme-pick="11" title="11 Soft harbor (soft dark)">11</button>
+      <button type="button" data-theme-pick="12" title="12 Soft ember (soft dark)">12</button>
+      <button type="button" data-theme-pick="13" title="13 Soft steel (soft dark)">13</button>
+      <button type="button" data-theme-pick="14" title="14 Soft moss (soft dark)">14</button>
+      <button type="button" data-theme-pick="15" title="15 Soft graphite (soft dark)">15</button>
+    </aside>
+
     <a class="skip-link" href="#home">Skip to content</a>
 
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href="#home">byrzbal</a>
+        <a class="brand" href="#home">Byron Baleda</a>
         <button
           class="nav-toggle"
           type="button"
@@ -35,8 +65,8 @@
         </button>
         <nav id="site-nav" class="site-nav" aria-label="Primary">
           <a href="#home" data-nav>Home</a>
+          <a href="#work" data-nav>Work</a>
           <a href="#about" data-nav>About</a>
-          <a href="#projects" data-nav>Projects</a>
           <a href="#resume" data-nav>Resume</a>
           <a href="#contact" data-nav>Contact</a>
         </nav>
@@ -50,23 +80,90 @@
           <p class="hero-kicker reveal">Backend &amp; business applications</p>
           <h1 class="hero-name reveal">Byron Baleda</h1>
           <p class="hero-pitch reveal">
-            I design and build reliable software people can depend on —
-            systems that last, not just demos that impress.
+            I build modern business applications that turn complex processes
+            into reliable, maintainable software.
           </p>
           <div class="hero-actions reveal">
-            <a class="btn btn-primary" href="#projects">View projects</a>
+            <a class="btn btn-primary" href="#work">See my work</a>
             <a class="btn btn-ghost" href="#contact">Contact</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="work" class="section section-alt">
+        <div class="container">
+          <header class="section-header centered reveal">
+            <p class="section-eyebrow">Portfolio</p>
+            <h2>Selected work</h2>
+          </header>
+          <div class="project-grid reveal-stagger">
+            <article class="project-card featured">
+              <p class="project-label">Featured</p>
+              <h3>FinDen</h3>
+              <p>
+                Personal finance app for tracking accounts, spending plans, and
+                investments — Android and web. Built for clarity, offline-first
+                reliability, and day-to-day money decisions.
+              </p>
+              <ul class="tags">
+                <li>Kotlin</li>
+                <li>Android</li>
+                <li>React</li>
+                <li>TypeScript</li>
+              </ul>
+              <div class="project-links">
+                <a href="projects/finden.html">View Project →</a>
+              </div>
+            </article>
+
+            <!-- PLACEHOLDER: replace with a real project -->
+            <article class="project-card">
+              <p class="project-label">Placeholder</p>
+              <h3>Client Portal</h3>
+              <p>
+                A secure business portal for clients to track requests, documents,
+                and status updates — replacing email threads and spreadsheet
+                chaos with one reliable system.
+              </p>
+              <ul class="tags">
+                <li>ASP.NET Core</li>
+                <li>Angular</li>
+                <li>SQL Server</li>
+              </ul>
+              <div class="project-links">
+                <span class="muted">Case study coming soon</span>
+              </div>
+            </article>
+
+            <!-- PLACEHOLDER: replace with a real project -->
+            <article class="project-card">
+              <p class="project-label">Placeholder</p>
+              <h3>AI Automation</h3>
+              <p>
+                Practical automation that helps teams process repetitive business
+                workflows faster — with human review where it matters and clear
+                auditability.
+              </p>
+              <ul class="tags">
+                <li>ASP.NET Core</li>
+                <li>APIs</li>
+                <li>Azure</li>
+              </ul>
+              <div class="project-links">
+                <span class="muted">Case study coming soon</span>
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
       <section id="about" class="section">
         <div class="container narrow">
-          <header class="section-header reveal">
+          <header class="section-header centered reveal">
             <p class="section-eyebrow">About</p>
-            <h2>About Me</h2>
+            <h2>Behind the code</h2>
           </header>
-          <div class="prose reveal">
+          <div class="prose reveal-stagger">
             <p>
               I've always believed that every problem has a solution waiting to
               be discovered. Programming is simply the tool that turns an idea
@@ -104,155 +201,158 @@
               mind, and create software that people can depend on.
             </p>
           </div>
-          <ul class="skills reveal" aria-label="Skills">
+          <ul class="skills reveal-stagger" aria-label="Skills">
             <li>Backend</li>
-            <li>APIs</li>
-            <li>Databases</li>
-            <li>Business applications</li>
-            <li>Kotlin</li>
-            <li>Android</li>
+            <li>ASP.NET Core</li>
+            <li>Angular</li>
+            <li>SQL</li>
+            <li>REST APIs</li>
+            <li>Business Applications</li>
           </ul>
         </div>
       </section>
 
-      <section id="projects" class="section section-alt">
-        <div class="container">
-          <header class="section-header reveal">
-            <p class="section-eyebrow">Work</p>
-            <h2>Projects</h2>
-            <p class="section-lede">
-              Selected work — FinDen is live; the others are placeholders while
-              more case studies are prepared.
-            </p>
-          </header>
-          <div class="project-grid">
-            <article class="project-card reveal featured">
-              <p class="project-label">Featured</p>
-              <h3>FinDen</h3>
-              <p>
-                Personal finance app for tracking accounts, spending plans, and
-                investments — available as Android and web. Built for clarity,
-                offline-first reliability, and day-to-day money decisions.
-              </p>
-              <ul class="tags">
-                <li>Kotlin</li>
-                <li>Android</li>
-                <li>React</li>
-                <li>TypeScript</li>
-              </ul>
-              <div class="project-links">
-                <a
-                  href="https://github.com/byrzbal/FinDen"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >GitHub</a
-                >
-              </div>
-            </article>
-
-            <!-- PLACEHOLDER: replace with a real project -->
-            <article class="project-card reveal">
-              <p class="project-label">Placeholder</p>
-              <h3>LedgerLink API</h3>
-              <p>
-                Fictional multi-tenant invoicing API with idempotent payments,
-                audit trails, and PostgreSQL-backed reporting for small
-                businesses.
-              </p>
-              <ul class="tags">
-                <li>Node.js</li>
-                <li>PostgreSQL</li>
-                <li>REST</li>
-              </ul>
-              <div class="project-links">
-                <span class="muted">Case study coming soon</span>
-              </div>
-            </article>
-
-            <!-- PLACEHOLDER: replace with a real project -->
-            <article class="project-card reveal">
-              <p class="project-label">Placeholder</p>
-              <h3>Harbor Ops Console</h3>
-              <p>
-                Fictional operations dashboard for scheduling warehouse jobs,
-                with role-based access and reliable background sync for field
-                teams.
-              </p>
-              <ul class="tags">
-                <li>Java</li>
-                <li>Spring</li>
-                <li>React</li>
-              </ul>
-              <div class="project-links">
-                <span class="muted">Case study coming soon</span>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="resume" class="section">
+      <section id="resume" class="section section-alt">
         <div class="container narrow">
-          <header class="section-header reveal">
+          <header class="section-header centered reveal">
             <p class="section-eyebrow">Experience</p>
             <h2>Resume</h2>
             <p class="section-lede">
-              <!-- PLACEHOLDER: replace fiction timeline with your real history -->
-              Sample timeline for layout — replace with your real roles when
-              ready.
+              Backend and team leadership experience building reliable business
+              applications — primarily on the .NET stack. Based in the
+              Philippines; experience delivering for UK product companies
+              (Tribal Group, Lendsoft) and US-facing enterprise clients
+              (Pointwest). Open to remote collaboration with global clients.
             </p>
           </header>
 
-          <ol class="timeline reveal">
+          <ol class="timeline reveal-stagger">
             <li>
-              <p class="timeline-meta">2022 — Present · Fiction Co.</p>
-              <h3>Senior Backend Engineer</h3>
+              <p class="timeline-meta">
+                Sep 2017 — Present · Tribal Group
+              </p>
+              <h3>Development Team Lead</h3>
               <p>
-                Designed APIs and data models for business workflows; focused on
-                reliability, observability, and maintainable service boundaries.
+                Lead delivery of business-critical software in an Agile
+                environment — guiding technical direction, mentoring engineers,
+                and keeping releases dependable for stakeholders who rely on the
+                product every day.
               </p>
             </li>
             <li>
-              <p class="timeline-meta">2019 — 2022 · Example Systems</p>
-              <h3>Software Engineer</h3>
+              <p class="timeline-meta">
+                Aug 2015 — Sep 2017 · Tribal Group
+              </p>
+              <h3>Senior Software Developer</h3>
               <p>
-                Built internal tools and integrations across databases and
-                services; partnered with product to ship durable features.
+                Built and maintained .NET applications and T-SQL data layers for
+                complex business workflows — focusing on clear APIs, solid data
+                models, and software that stays maintainable as requirements
+                grow.
               </p>
             </li>
             <li>
-              <p class="timeline-meta">2015 — 2019 · University</p>
-              <h3>B.S. Computer Science</h3>
+              <p class="timeline-meta">
+                Jan 2014 — May 2015 · Lendsoft Solutions Inc.
+              </p>
+              <h3>Team Lead</h3>
               <p>
-                Foundations in systems, databases, and software design. Replace
-                with your real education details.
+                Led a development team delivering client software solutions —
+                coordinating priorities, unblocking delivery, and keeping
+                quality high under real project deadlines.
+              </p>
+            </li>
+            <li>
+              <p class="timeline-meta">
+                Jun 2013 — Dec 2013 · Condor POS Solutions RP Inc.
+              </p>
+              <h3>Software Programmer</h3>
+              <p>
+                Developed features for point-of-sale and related business systems
+                — practical, reliability-focused software used in day-to-day
+                operations.
+              </p>
+            </li>
+            <li>
+              <p class="timeline-meta">
+                Mar 2013 — Jun 2013 · RealPage, Inc.
+              </p>
+              <h3>Software Developer</h3>
+              <p>
+                Contributed to product development for a global property
+                technology company — shipping features within established
+                engineering practices and release cycles.
+              </p>
+            </li>
+            <li>
+              <p class="timeline-meta">
+                Nov 2007 — Dec 2012 · Pointwest Technologies
+              </p>
+              <h3>.NET Software Engineer</h3>
+              <p>
+                Designed and delivered .NET solutions for enterprise clients —
+                strengthening backend fundamentals across multi-year product and
+                project engagements.
+              </p>
+            </li>
+            <li>
+              <p class="timeline-meta">
+                Jun 2000 — Oct 2007 · STI College
+              </p>
+              <h3>IT Head / Thesis Coordinator / Instructor</h3>
+              <p>
+                Led campus IT operations while teaching Computer Science and
+                coordinating student thesis work — combining technical leadership
+                with clear communication and mentoring.
               </p>
             </li>
           </ol>
 
-          <!-- PLACEHOLDER: drop a real resume.pdf into assets/ then enable this link -->
+          <div class="resume-edu-gap" aria-hidden="true"></div>
+
+          <header class="section-header centered reveal resume-edu-header" id="education">
+            <h2>Education</h2>
+          </header>
+          <ol class="timeline reveal-stagger">
+            <li>
+              <p class="timeline-meta">STI College Legazpi</p>
+              <h3>Bachelor's degree, Computer Science</h3>
+              <p>
+                Foundations in software development, systems, and problem
+                solving that still shape how I approach building business
+                applications today.
+              </p>
+            </li>
+          </ol>
+
           <p class="resume-cta reveal">
-            <span class="btn btn-ghost is-disabled" aria-disabled="true"
-              >Download PDF — coming soon</span
+            <a
+              class="btn btn-ghost"
+              href="assets/Byron%20Baleda%20Resume.pdf"
+              download="Byron Baleda Resume.pdf"
+              >Download PDF</a
             >
           </p>
         </div>
       </section>
 
-      <section id="contact" class="section section-alt">
-        <div class="container narrow">
-          <header class="section-header reveal">
-            <p class="section-eyebrow">Get in touch</p>
-            <h2>Contact</h2>
+      <section id="contact" class="section contact-cta">
+        <div class="container narrow centered-block">
+          <header class="section-header centered reveal">
+            <h2>Have a problem worth solving?</h2>
             <p class="section-lede">
-              <!-- PLACEHOLDER: replace email and social URLs -->
-              Prefer email for project inquiries. Social links below are
-              placeholders until you plug in the real addresses.
+              Prefer email for project inquiries. You can also reach me on
+              GitHub or LinkedIn.
             </p>
           </header>
+          <div class="contact-actions reveal">
+            <a class="btn btn-primary" href="mailto:byrzbal@gmail.com"
+              >Get in touch</a
+            >
+          </div>
           <div class="contact-block reveal">
-            <a class="contact-email" href="mailto:hello@example.com"
-              >hello@example.com</a
+            <a class="contact-email" href="mailto:byrzbal@gmail.com"
+              >byrzbal@gmail.com</a
             >
             <ul class="social-links">
               <li>
@@ -265,7 +365,7 @@
               </li>
               <li>
                 <a
-                  href="https://www.linkedin.com/in/your-profile"
+                  href="https://www.linkedin.com/in/byronbaleda/"
                   target="_blank"
                   rel="noopener noreferrer"
                   >LinkedIn</a

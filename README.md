@@ -23,8 +23,8 @@ Mark these in the HTML with `PLACEHOLDER` comments:
 
 | Item | Where | What to do |
 | --- | --- | --- |
-| Email | Contact → `mailto:hello@example.com` | Your real email |
-| LinkedIn | Contact social links | Real profile URL |
+| Email | Contact | Done — byrzbal@gmail.com |
+| LinkedIn | Contact social links | Done — https://www.linkedin.com/in/byronbaleda/ |
 | Resume PDF | `assets/resume.pdf` + Resume CTA | Add PDF; change the disabled “coming soon” control into an `<a class="btn btn-ghost" href="assets/resume.pdf" download>` |
 | Resume timeline | `#resume` list | Replace fiction roles/education |
 | LedgerLink API | Projects card | Replace with a real project |
