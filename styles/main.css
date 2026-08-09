@@ -462,7 +462,8 @@ a:hover {
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  gap: 0.7rem;
+  height: 100%;
   transition:
     border-color 0.25s var(--ease),
     transform 0.25s var(--ease);
@@ -478,7 +479,7 @@ a:hover {
 }
 
 .project-label {
-  margin: 0 0 0.65rem;
+  margin: 0;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -487,7 +488,7 @@ a:hover {
 }
 
 .project-card h3 {
-  margin: 0 0 0.7rem;
+  margin: 0;
   font-family: var(--font-display);
   font-size: 1.45rem;
   letter-spacing: -0.02em;
@@ -496,7 +497,6 @@ a:hover {
 .project-card > p {
   margin: 0;
   color: var(--text-muted);
-  flex: 1;
 }
 
 .tags {
@@ -505,7 +505,7 @@ a:hover {
   flex-wrap: wrap;
   gap: 0.4rem;
   padding: 0;
-  margin: 1.15rem 0 1rem;
+  margin: auto 0 0;
 }
 
 .tags li {
@@ -522,6 +522,7 @@ a:hover {
   flex-wrap: wrap;
   gap: 0.85rem 1.25rem;
   align-items: center;
+  margin: 0;
 }
 
 .project-links a {

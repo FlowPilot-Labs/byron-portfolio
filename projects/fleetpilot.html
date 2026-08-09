@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="FinDen — local-first personal finance for accounts, spending plans, investments, and FIRE goals. Android and web by Byron Baleda."
+      content="FleetPilot — local-first trucking management prototype for dispatch, documents, and role portals. Angular and IndexedDB by Byron Baleda."
     />
-    <title>FinDen — Byron Baleda</title>
+    <title>FleetPilot — Byron Baleda</title>
 
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="../assets/favicon.png" type="image/png" sizes="48x48" />
@@ -15,23 +15,15 @@
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Byron Baleda" />
-    <meta property="og:title" content="FinDen — Byron Baleda" />
+    <meta property="og:title" content="FleetPilot — Byron Baleda" />
     <meta
       property="og:description"
-      content="Local-first personal finance for accounts, spending plans, investments, and FIRE goals — Android and web."
+      content="Local-first trucking management prototype for dispatching loads, delivery documents, and role portals — Angular and IndexedDB."
     />
-    <meta property="og:url" content="https://flowpilot-labs.github.io/byron-portfolio/projects/finden.html" />
-    <meta property="og:image" content="https://flowpilot-labs.github.io/byron-portfolio/assets/og-finden.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="FinDen — Byron Baleda" />
     <meta
-      name="twitter:description"
-      content="Local-first personal finance for accounts, spending plans, investments, and FIRE goals — Android and web."
+      property="og:url"
+      content="https://flowpilot-labs.github.io/byron-portfolio/projects/fleetpilot.html"
     />
-    <meta name="twitter:image" content="https://flowpilot-labs.github.io/byron-portfolio/assets/og-finden.png" />
 
     <script>
       try {
@@ -103,21 +95,29 @@
           <p class="section-eyebrow reveal">
             <a class="back-link" href="../index.html#work">← Featured work</a>
           </p>
-          <h1 class="project-title reveal">FinDen</h1>
+          <h1 class="project-title reveal">FleetPilot</h1>
           <p class="project-summary reveal">
-            A local-first personal finance app for accounts, spending plans,
-            investments, and FIRE goals — built for Android and web with the
-            same product model on both.
+            A local-first trucking management prototype for dispatching loads,
+            managing delivery documents, and coordinating owners, dispatchers,
+            drivers, and customers — built for the web with Angular and
+            IndexedDB.
           </p>
           <div class="hero-actions reveal">
             <a
               class="btn btn-primary"
-              href="https://flowpilot-labs.github.io/FinDen/"
+              href="https://flowpilot-labs.github.io/fleetpilot/"
               target="_blank"
               rel="noopener noreferrer"
               >Open live app</a
             >
-            <a class="btn btn-ghost" href="#demo">Demo video</a>
+            <!-- PLACEHOLDER: replace with real demo video URL -->
+            <a
+              class="btn btn-ghost"
+              href="https://example.com/fleetpilot-demo"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Demo video</a
+            >
           </div>
         </div>
       </section>
@@ -127,11 +127,11 @@
           <h2>Problem</h2>
           <div class="prose">
             <p>
-              Day-to-day money often lives across banks, e-wallets, credit cards,
-              investments, and mental notes. Spreadsheets and separate apps make
-              it hard to see net worth, cash flow, and progress toward goals in
-              one place — especially when you want something private and usable
-              offline.
+              Small trucking operations often coordinate loads, drivers, delivery
+              updates, and paperwork across calls, chat messages, spreadsheets,
+              and paper documents. That makes it difficult to see where a load
+              is, whether proof of delivery has been submitted, and which driver
+              settlements are still pending.
             </p>
           </div>
         </div>
@@ -142,11 +142,14 @@
           <h2>Solution</h2>
           <div class="prose">
             <p>
-              FinDen is a calm financial den: track asset and liability accounts,
-              income and expenses, transfers, a monthly spending plan, investment
-              holdings, bills, and long-term goals including FIRE. Android and
-              web stay in functional parity, keep data on-device by default, and
-              share design tokens so the experience feels like one product.
+              FleetPilot brings the core shipment workflow into one focused web
+              app. Dispatchers create and assign loads, move shipments through a
+              visual dispatch board, and manage Rate Confirmations, Bills of
+              Lading, and Proofs of Delivery. Owners get a clear operational view
+              and can review simple driver settlements, while drivers and
+              customers have role-specific portals for the information they need.
+              Built as a local-first Angular prototype, FleetPilot stores demo
+              data in IndexedDB so it remains usable without a backend.
             </p>
           </div>
         </div>
@@ -157,35 +160,47 @@
           <h2>Architecture</h2>
           <div class="prose">
             <p>
-              FinDen is a local-first monorepo with Android and web clients that
-              share one product model. Both cover accounts, transactions,
-              transfers, spending plans, investments, goals (including FIRE),
-              bills, and settings with backup/import. Domain logic lives in each
-              client so net worth, cash flow, and plan utilization stay aligned.
+              FleetPilot is a local-first Angular SPA with four role portals —
+              owner, dispatcher, driver, and customer — sharing one shipment
+              domain. Loads, drivers, vehicles, customers, documents (rate
+              confirmations, bills of lading, proofs of delivery), settlements,
+              and activity all live in the same browser store so every persona
+              sees a consistent operational picture.
             </p>
             <p>
-              Android persists with Room behind a repository/ViewModel stack; web
-              uses Zustand with localStorage. No sign-in is required for core
-              use. Shared <code>tokens.json</code> generates Android colors and
-              web CSS. Vite builds deploy to GitHub Pages via Actions. An ASP.NET
-              Core API is reserved for future sync; today everything runs
-              client-side.
+              Dispatchers create and assign loads, then move them on a visual
+              board with Material CDK drag-and-drop and status rules. Dexie
+              wraps IndexedDB for persistence and seeds demo personas, loads,
+              documents, and settlements on first launch — no sign-in backend
+              required. Chart.js powers owner/dispatcher dashboard metrics. The
+              app deploys to GitHub Pages; an ASP.NET Core API is reserved for
+              future sync while the prototype stays fully client-side.
             </p>
           </div>
 
-          <figure class="arch-diagram" aria-label="FinDen architecture overview">
+          <figure class="arch-diagram" aria-label="FleetPilot architecture overview">
             <div class="arch-layer">
-              <p class="arch-layer-label">Clients</p>
+              <p class="arch-layer-label">Role portals</p>
               <div class="arch-row arch-row-2">
                 <div class="arch-node">
-                  <strong>Android</strong>
-                  <span>Kotlin · Jetpack Compose · Material 3</span>
-                  <span>Navigation Compose · ViewModel</span>
+                  <strong>Owner</strong>
+                  <span>Dashboard · Driver settlements</span>
+                  <span>Operational KPIs · Activity</span>
                 </div>
                 <div class="arch-node">
-                  <strong>Web</strong>
-                  <span>React 19 · TypeScript · Vite</span>
-                  <span>React Router · Zustand</span>
+                  <strong>Dispatcher</strong>
+                  <span>Loads · Dispatch board</span>
+                  <span>Documents · Assignments</span>
+                </div>
+                <div class="arch-node">
+                  <strong>Driver</strong>
+                  <span>My Loads · Documents</span>
+                  <span>POD upload · Status updates</span>
+                </div>
+                <div class="arch-node">
+                  <strong>Customer</strong>
+                  <span>My Shipments · Documents</span>
+                  <span>Delivery visibility</span>
                 </div>
               </div>
             </div>
@@ -195,8 +210,11 @@
             <div class="arch-layer arch-layer-accent">
               <p class="arch-layer-label">Shared product domain</p>
               <div class="arch-node arch-node-wide">
-                <strong>Accounts · Transactions · Transfers · Spending Plan</strong>
-                <span>Investments · Goals / FIRE · Bills · Settings</span>
+                <strong>Loads · Drivers · Vehicles · Customers</strong>
+                <span
+                  >Documents (RC · BOL · POD) · Settlements · Activity ·
+                  Users</span
+                >
               </div>
             </div>
 
@@ -206,12 +224,12 @@
               <p class="arch-layer-label">Local-first storage</p>
               <div class="arch-row arch-row-2">
                 <div class="arch-node">
-                  <strong>Room</strong>
-                  <span>SQLite on Android</span>
+                  <strong>Dexie</strong>
+                  <span>IndexedDB in the browser</span>
                 </div>
                 <div class="arch-node">
-                  <strong>localStorage</strong>
-                  <span>Browser persistence on web</span>
+                  <strong>Demo seed</strong>
+                  <span>Personas, loads, docs, settlements</span>
                 </div>
               </div>
             </div>
@@ -219,15 +237,15 @@
             <div class="arch-flow" aria-hidden="true"></div>
 
             <div class="arch-layer">
-              <p class="arch-layer-label">Shared design · Delivery · Planned</p>
+              <p class="arch-layer-label">Shell · Delivery · Planned</p>
               <div class="arch-row arch-row-3">
                 <div class="arch-node">
-                  <strong>Design tokens</strong>
-                  <span>tokens.json → Color.kt + tokens.css</span>
+                  <strong>Angular Material</strong>
+                  <span>Shell · CDK drag-and-drop · Charts</span>
                 </div>
                 <div class="arch-node">
                   <strong>GitHub Pages</strong>
-                  <span>Actions build &amp; deploy web</span>
+                  <span>angular-cli-ghpages deploy</span>
                 </div>
                 <div class="arch-node arch-node-muted">
                   <strong>ASP.NET Core API</strong>
@@ -243,18 +261,15 @@
         <div class="container narrow case-block reveal">
           <h2>Technologies</h2>
           <ul class="skills">
-            <li>Kotlin</li>
-            <li>Jetpack Compose</li>
-            <li>Material 3</li>
-            <li>Room</li>
-            <li>ViewModel</li>
-            <li>React</li>
+            <li>Angular</li>
             <li>TypeScript</li>
-            <li>Vite</li>
-            <li>Zustand</li>
-            <li>localStorage</li>
-            <li>Design tokens</li>
-            <li>GitHub Actions</li>
+            <li>Angular Material</li>
+            <li>CDK Drag and Drop</li>
+            <li>Dexie</li>
+            <li>IndexedDB</li>
+            <li>Chart.js</li>
+            <li>ng2-charts</li>
+            <li>RxJS</li>
             <li>GitHub Pages</li>
             <li>ASP.NET Core (planned)</li>
           </ul>
@@ -265,48 +280,49 @@
         <div class="container case-block reveal">
           <h2>Screenshots</h2>
           <p class="section-lede">
-            Home, spending plan, investments, and goals from the live web app.
+            Dispatch board, owner dashboard, and driver and customer portals from
+            the live app.
           </p>
           <div class="shot-grid">
             <figure class="shot">
               <img
-                src="../assets/projects/finden/home.png"
-                alt="FinDen home dashboard showing net worth, growth chart, and month at a glance"
-                width="773"
-                height="915"
+                src="../assets/projects/fleetpilot/dispatch-board.png"
+                alt="FleetPilot dispatch board with Pending, Assigned, Picked Up, In Transit, and Delivered columns"
+                width="1024"
+                height="503"
                 loading="lazy"
               />
-              <figcaption>Home dashboard</figcaption>
+              <figcaption>Dispatch board</figcaption>
             </figure>
             <figure class="shot">
               <img
-                src="../assets/projects/finden/plan.png"
-                alt="FinDen spending plan with category donut chart and budget progress"
-                width="774"
-                height="914"
+                src="../assets/projects/fleetpilot/owner-dashboard.png"
+                alt="FleetPilot owner dashboard with KPIs, upcoming deliveries, activity feed, and settlement summary"
+                width="1024"
+                height="508"
                 loading="lazy"
               />
-              <figcaption>Spending plan</figcaption>
+              <figcaption>Owner dashboard</figcaption>
             </figure>
             <figure class="shot">
               <img
-                src="../assets/projects/finden/invest.png"
-                alt="FinDen investments screen with portfolio chart and allocation donut"
-                width="758"
-                height="915"
+                src="../assets/projects/fleetpilot/driver-portal.png"
+                alt="FleetPilot driver portal My Loads with status actions and Upload POD"
+                width="1024"
+                height="491"
                 loading="lazy"
               />
-              <figcaption>Investments</figcaption>
+              <figcaption>Driver portal</figcaption>
             </figure>
             <figure class="shot">
               <img
-                src="../assets/projects/finden/goals.png"
-                alt="FinDen goals screen with FIRE progress and individual goal trackers"
-                width="773"
-                height="919"
+                src="../assets/projects/fleetpilot/customer-portal.png"
+                alt="FleetPilot customer portal My Shipments table with routes and status badges"
+                width="1024"
+                height="496"
                 loading="lazy"
               />
-              <figcaption>Goals &amp; FIRE</figcaption>
+              <figcaption>Customer portal</figcaption>
             </figure>
           </div>
         </div>
@@ -316,22 +332,20 @@
         <div class="container narrow case-block reveal">
           <h2>Demo video</h2>
           <p class="section-lede">
-            A quick walkthrough of FinDen across home, plan, invest, and goals.
+            <!-- PLACEHOLDER: replace with real demo embed or file -->
+            Temporary link until the real demo is ready.
           </p>
-          <div class="demo-video">
-            <video
-              controls
-              playsinline
-              preload="metadata"
-              poster="../assets/projects/finden/home.png"
+          <p>
+            <a
+              class="btn btn-ghost"
+              href="https://example.com/fleetpilot-demo"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Watch demo video</a
             >
-              <source
-                src="../assets/projects/finden/FinDenDemo.mp4"
-                type="video/mp4"
-              />
-              Your browser does not support embedded video.
-              <a href="../assets/projects/finden/FinDenDemo.mp4">Download the demo</a>.
-            </video>
+          </p>
+          <div class="video-placeholder" role="img" aria-label="Demo video placeholder">
+            Demo video coming soon
           </div>
         </div>
       </section>
@@ -340,12 +354,13 @@
         <div class="container narrow case-block reveal">
           <h2>Live app</h2>
           <p class="section-lede">
-            Try the web version of FinDen in the browser.
+            Try the local-first prototype in the browser — pick a persona on
+            login to explore owner, dispatcher, driver, and customer portals.
           </p>
           <p>
             <a
               class="btn btn-primary"
-              href="https://flowpilot-labs.github.io/FinDen/"
+              href="https://flowpilot-labs.github.io/fleetpilot/"
               target="_blank"
               rel="noopener noreferrer"
               >Open live app</a
