@@ -1,11 +1,11 @@
-# Portfolio handoff — byrzbal.github.io
+# Portfolio handoff — byron-portfolio
 
-**Updated:** 2026-08-08  
-**Repo:** https://github.com/byrzbal/byrzbal.github.io  
-**Live:** https://byrzbal.github.io/  
-**Local path:** `/Users/byronbaleda/AndroidStudioProjects/byrzbal.github.io`
+**Updated:** 2026-08-09  
+**Repo:** https://github.com/FlowPilot-Labs/byron-portfolio (private)  
+**Live:** https://flowpilot-labs.github.io/byron-portfolio/  
+**Local path:** `/Users/byronbaleda/AndroidStudioProjects/byron-portfolio`
 
-Static HTML/CSS/JS portfolio for Byron Baleda, deployed via GitHub Pages from `main` (branch `/` root).
+Static HTML/CSS/JS portfolio for Byron Baleda, deployed via GitHub Pages from `main` (branch `/` root). Repo is private; Pages site is public.
 
 ---
 
@@ -14,7 +14,7 @@ Static HTML/CSS/JS portfolio for Byron Baleda, deployed via GitHub Pages from `m
 Side freelance client acquisition. Not SEO-heavy. Clients find Byron via LinkedIn, referrals, or a direct link.
 
 **Intentional choices:**
-- Only **one public project** (FinDen). Extra project cards stay in the DOM with `hidden` until ready.
+- Featured projects: FinDen and FleetPilot. Extra project cards stay in the DOM with `hidden` until ready.
 - **No public FinDen source-repo link** — repo is private by design.
 - Favicon + Open Graph added for share/tab polish; deep SEO is out of scope.
 
@@ -23,60 +23,22 @@ Side freelance client acquisition. Not SEO-heavy. Clients find Byron via LinkedI
 ## Structure
 
 ```
-byrzbal.github.io/
+byron-portfolio/
 ├── index.html                 # Home: hero, work, about, resume, contact
 ├── projects/finden.html       # FinDen case study
+├── projects/fleetpilot.html   # FleetPilot case study
 ├── assets/
 │   ├── favicon.svg / .png
 │   ├── apple-touch-icon.png
 │   ├── og-home.png / og-finden.png
 │   ├── Byron Baleda Resume.pdf
 │   ├── resume-print.html      # Source for regenerating the PDF
-│   └── projects/finden/       # Screenshots + FinDenDemo.mp4
+│   └── projects/              # Screenshots + demo media
 ├── scripts/main.js
 ├── styles/main.css
 ├── styles/themes.css
 └── README.md
 ```
-
----
-
-## Themes
-
-Auto day/night by local time:
-- Day (06:00–17:59) → theme `5` (Clean alpine)
-- Night → theme `13` (Soft steel)
-
-Theme picker markup exists but is **hidden**. To restore manual picking: see comments in `index.html` / `scripts/main.js` (`AUTO_THEME = false`) and show `.theme-picker` in CSS.
-
-HTML `hidden` is reinforced in CSS (`[hidden] { display: none !important; }`) because `.project-card` / `.btn` `display: flex` otherwise override it.
-
----
-
-## FinDen case study
-
-Page: `projects/finden.html`
-
-Includes:
-- Real summary / problem / solution / architecture writeup
-- CSS-variable architecture diagram (adapts to day/night)
-- Technologies list
-- Screenshots: home, plan, invest, goals
-- Demo video (`assets/projects/finden/FinDenDemo.mp4`)
-- Live app: https://flowpilot-labs.github.io/FinDen/
-
-Related product monorepo (private / separate):  
-`/Users/byronbaleda/AndroidStudioProjects/FinDen`  
-Stack overview: Android (Kotlin, Compose, Room) + web (React, TypeScript, Vite, Zustand, localStorage) + shared `design/tokens.json` + planned ASP.NET Core API + GitHub Actions → Pages.
-
----
-
-## Hidden / restore later
-
-| What | Where | How to restore |
-| --- | --- | --- |
-| Client Portal + AI Automation cards | `index.html` project grid | Remove `hidden` on those `<article class="project-card">` elements |
-| Theme picker | `index.html`, `finden.html`, `scripts/main.js`, `themes.css` | Follow comments; set `AUTO_THEME = false` |
 
 ---
 
@@ -90,8 +52,8 @@ Stack overview: Android (Kotlin, Compose, Room) + web (React, TypeScript, Vite, 
 
 ```bash
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-HTML="$HOME/AndroidStudioProjects/byrzbal.github.io/assets/resume-print.html"
-PDF="$HOME/AndroidStudioProjects/byrzbal.github.io/assets/Byron Baleda Resume.pdf"
+HTML="$HOME/AndroidStudioProjects/byron-portfolio/assets/resume-print.html"
+PDF="$HOME/AndroidStudioProjects/byron-portfolio/assets/Byron Baleda Resume.pdf"
 "$CHROME" --headless=new --disable-gpu --no-pdf-header-footer \
   --print-to-pdf="$PDF" "file://$HTML"
 ```
@@ -110,7 +72,7 @@ Recent experience bullets updated for:
 Port **5500** (not FinDen Vite `5173`):
 
 ```bash
-cd ~/AndroidStudioProjects/byrzbal.github.io
+cd ~/AndroidStudioProjects/byron-portfolio
 python3 -m http.server 5500
 ```
 
@@ -126,7 +88,7 @@ git commit -m "Your message"
 git push origin main
 ```
 
-Pages source: branch `main`, `/ (root)`. Status: `gh api repos/byrzbal/byrzbal.github.io/pages`
+Pages source: branch `main`, `/ (root)`. Status: `gh api repos/FlowPilot-Labs/byron-portfolio/pages`
 
 Contact: byrzbal@gmail.com · LinkedIn `byronbaleda` · GitHub `byrzbal`
 

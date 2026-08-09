@@ -1,16 +1,18 @@
-# byrzbal.github.io
+# byron-portfolio
 
 Personal portfolio for [Byron Baleda](https://github.com/byrzbal) — static HTML/CSS/JS on GitHub Pages.
 
-**Live:** https://byrzbal.github.io
+**Repo:** https://github.com/FlowPilot-Labs/byron-portfolio (private)  
+**Live:** https://flowpilot-labs.github.io/byron-portfolio/
 
 ## Structure
 
 ```
-byrzbal.github.io/
+byron-portfolio/
 ├── index.html                 # Home: hero, work, about, resume, contact
 ├── projects/
-│   └── finden.html            # FinDen case study
+│   ├── finden.html            # FinDen case study
+│   └── fleetpilot.html        # FleetPilot case study
 ├── assets/
 │   ├── favicon.svg / .png     # Browser tab icon
 │   ├── apple-touch-icon.png   # iOS home-screen icon
@@ -18,7 +20,7 @@ byrzbal.github.io/
 │   ├── og-finden.png          # Social preview (FinDen)
 │   ├── Byron Baleda Resume.pdf
 │   ├── resume-print.html
-│   └── projects/finden/       # Screenshots + demo video
+│   └── projects/              # Screenshots + demo media
 ├── scripts/main.js
 └── styles/
     ├── main.css
@@ -32,7 +34,11 @@ architecture, technologies, screenshots, demo video, and live app link.
 
 - Case study: [`projects/finden.html`](projects/finden.html)
 - Live app: https://flowpilot-labs.github.io/FinDen/
-- Source: https://github.com/byrzbal/FinDen (or FlowPilot-Labs org, if that is the public repo)
+
+**FleetPilot** — local-first trucking management prototype.
+
+- Case study: [`projects/fleetpilot.html`](projects/fleetpilot.html)
+- Live app: https://flowpilot-labs.github.io/fleetpilot/
 
 Two extra project cards (Client Portal, AI Automation) stay in the DOM with
 `hidden` until real case studies are ready. Remove `hidden` on those
@@ -50,7 +56,7 @@ picking.
 Does **not** use FinDen’s Vite port (`5173`). Use **5500**:
 
 ```bash
-cd ~/AndroidStudioProjects/byrzbal.github.io
+cd ~/AndroidStudioProjects/byron-portfolio
 python3 -m http.server 5500
 ```
 
@@ -60,6 +66,6 @@ Or open `index.html` directly in a browser (no server).
 
 ## Deploy
 
-1. Push `main` to `byrzbal/byrzbal.github.io`
+1. Push `main` to `FlowPilot-Labs/byron-portfolio`
 2. GitHub → Settings → Pages → Source: **Deploy from a branch** → `main` / `/ (root)`
-3. Wait a minute, then visit https://byrzbal.github.io
+3. Wait a minute, then visit https://flowpilot-labs.github.io/byron-portfolio/
