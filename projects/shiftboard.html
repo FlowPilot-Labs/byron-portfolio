@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="ShiftBoard — local-first employee scheduling for weekly shifts, coverage, and publish workflows. React, TypeScript, and IndexedDB by Byron Baleda."
+    />
+    <title>ShiftBoard — Byron Baleda</title>
+
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="../assets/favicon.png" type="image/png" sizes="48x48" />
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Byron Baleda" />
+    <meta property="og:title" content="ShiftBoard — Byron Baleda" />
+    <meta
+      property="og:description"
+      content="Local-first employee scheduling for weekly shifts, coverage checks, and publish workflows — React, TypeScript, and IndexedDB."
+    />
+    <meta
+      property="og:url"
+      content="https://flowpilot-labs.github.io/byron-portfolio/projects/shiftboard.html"
+    />
+
+    <script>
+      try {
+        /* Auto theme by local time: day=5, night=13 */
+        var h = new Date().getHours();
+        var t = h >= 6 && h < 18 ? "5" : "13";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/themes.css" />
+  </head>
+  <body>
+    <!-- Theme picker kept in DOM but hidden via CSS. See index.html notes to restore. -->
+    <aside class="theme-picker" aria-label="Temporary theme switcher" hidden>
+      <span class="theme-picker-label">Theme</span>
+      <button type="button" data-theme-pick="1" title="1 Coastal slate">1</button>
+      <button type="button" data-theme-pick="2" title="2 Paper studio">2</button>
+      <button type="button" data-theme-pick="3" title="3 Sand &amp; forest">3</button>
+      <button type="button" data-theme-pick="4" title="4 Mist blueprint">4</button>
+      <button type="button" data-theme-pick="5" title="5 Clean alpine">5</button>
+      <button type="button" data-theme-pick="6" title="6 Fog harbor (gradient)">6</button>
+      <button type="button" data-theme-pick="7" title="7 Clay atelier">7</button>
+      <button type="button" data-theme-pick="8" title="8 Sage ledger">8</button>
+      <button type="button" data-theme-pick="9" title="9 Dusk stone">9</button>
+      <button type="button" data-theme-pick="10" title="10 Parchment desk">10</button>
+      <button type="button" data-theme-pick="11" title="11 Soft harbor (soft dark)">11</button>
+      <button type="button" data-theme-pick="12" title="12 Soft ember (soft dark)">12</button>
+      <button type="button" data-theme-pick="13" title="13 Soft steel (soft dark)">13</button>
+      <button type="button" data-theme-pick="14" title="14 Soft moss (soft dark)">14</button>
+      <button type="button" data-theme-pick="15" title="15 Soft graphite (soft dark)">15</button>
+    </aside>
+
+    <a class="skip-link" href="#project">Skip to content</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../index.html">Byron Baleda</a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="Open menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a href="../index.html#home">Home</a>
+          <a href="../index.html#work">Work</a>
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#resume">Resume</a>
+          <a href="../index.html#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="project" class="project-page">
+      <section class="section project-hero">
+        <div class="container narrow">
+          <p class="section-eyebrow reveal">
+            <a class="back-link" href="../index.html#work">← Selected work</a>
+          </p>
+          <h1 class="project-title reveal">ShiftBoard</h1>
+          <p class="project-summary reveal">
+            A local-first employee scheduling app for planning weekly shifts,
+            checking availability and coverage, publishing the schedule, and
+            handing it to the team — built for the web with React, TypeScript,
+            and IndexedDB.
+          </p>
+          <div class="hero-actions reveal">
+            <a
+              class="btn btn-primary"
+              href="https://flowpilot-labs.github.io/ShiftBoard/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Open live app</a
+            >
+            <a class="btn btn-ghost" href="#demo">Demo video</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container narrow case-block reveal">
+          <h2>Problem</h2>
+          <div class="prose">
+            <p>
+              Growing teams often build weekly schedules in spreadsheets or chat
+              threads. Overlaps, unavailable staff, max-hour breaches, and thin
+              coverage only show up after the week is already published — and
+              fixing them means another round of messages.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow case-block reveal">
+          <h2>Solution</h2>
+          <div class="prose">
+            <p>
+              ShiftBoard puts the weekly roster in one focused web app. Managers
+              assign shifts on a grid, apply templates, and see conflicts and
+              coverage gaps as they work. Availability and staffing requirements
+              feed a pure scheduling engine that flags overlaps, rest-period
+              issues, and understaffed slots before publish. Employees can preview
+              their week in My Schedule, and reports summarize hours and coverage
+              for print. Built as a local-first React prototype, ShiftBoard stores
+              everything in IndexedDB so it works without a backend — with
+              export/import for backups and a white-label branding layer for demo
+              company identities.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container narrow case-block reveal">
+          <h2>Architecture</h2>
+          <div class="prose">
+            <p>
+              ShiftBoard is a local-first React SPA. Feature screens for
+              dashboard, schedule, employees, availability, templates, coverage,
+              reports, and settings share one domain model. Pure functions in
+              <code>core/</code> evaluate overlaps, availability, weekly hours,
+              rest periods, and coverage — with no React or Dexie imports — so
+              the engine stays unit-testable. Typed repositories wrap Dexie /
+              IndexedDB; Zustand holds only ephemeral UI state such as week
+              offset.
+            </p>
+            <p>
+              HashRouter keeps deep links working on static hosts. Demo seed data
+              loads on first launch with intentional schedule issues so the
+              conflict and coverage UI is easy to explore. The white-label layer
+              maps brand name, colors, and typography onto CSS variables at boot.
+              The app deploys to GitHub Pages as a static Vite build.
+            </p>
+          </div>
+
+          <figure class="arch-diagram" aria-label="ShiftBoard architecture overview">
+            <div class="arch-layer">
+              <p class="arch-layer-label">Product surfaces</p>
+              <div class="arch-row arch-row-2">
+                <div class="arch-node">
+                  <strong>Schedule</strong>
+                  <span>Weekly grid · Templates</span>
+                  <span>Assign · Publish</span>
+                </div>
+                <div class="arch-node">
+                  <strong>Coverage &amp; Reports</strong>
+                  <span>Staffing matrix · Hours</span>
+                  <span>Printable summaries</span>
+                </div>
+                <div class="arch-node">
+                  <strong>People</strong>
+                  <span>Employees · Availability</span>
+                  <span>My Schedule preview</span>
+                </div>
+                <div class="arch-node">
+                  <strong>Settings</strong>
+                  <span>Rules · Export / import</span>
+                  <span>Demo reset</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="arch-flow" aria-hidden="true"></div>
+
+            <div class="arch-layer arch-layer-accent">
+              <p class="arch-layer-label">Scheduling engine</p>
+              <div class="arch-node arch-node-wide">
+                <strong>Overlaps · Availability · Max hours · Rest · Coverage</strong>
+                <span>Pure TypeScript in core/ — evaluated on assign and at publish</span>
+              </div>
+            </div>
+
+            <div class="arch-flow" aria-hidden="true"></div>
+
+            <div class="arch-layer">
+              <p class="arch-layer-label">Local-first storage</p>
+              <div class="arch-row arch-row-2">
+                <div class="arch-node">
+                  <strong>Dexie</strong>
+                  <span>IndexedDB in the browser</span>
+                </div>
+                <div class="arch-node">
+                  <strong>Demo seed</strong>
+                  <span>Café roster with intentional issues</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="arch-flow" aria-hidden="true"></div>
+
+            <div class="arch-layer">
+              <p class="arch-layer-label">Shell · Delivery</p>
+              <div class="arch-row arch-row-3">
+                <div class="arch-node">
+                  <strong>React + Vite</strong>
+                  <span>HashRouter · Design tokens</span>
+                </div>
+                <div class="arch-node">
+                  <strong>White-label</strong>
+                  <span>Brand config → CSS variables</span>
+                </div>
+                <div class="arch-node">
+                  <strong>GitHub Pages</strong>
+                  <span>Static Vite deploy</span>
+                </div>
+              </div>
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow case-block reveal">
+          <h2>Technologies</h2>
+          <ul class="skills">
+            <li>React</li>
+            <li>TypeScript</li>
+            <li>Vite</li>
+            <li>React Router</li>
+            <li>Dexie</li>
+            <li>IndexedDB</li>
+            <li>Zustand</li>
+            <li>Vitest</li>
+            <li>GitHub Pages</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container case-block reveal">
+          <h2>Screenshots</h2>
+          <p class="section-lede">
+            Dashboard alerts, weekly schedule grid, coverage matrix, and hours
+            report from the live demo (Brew &amp; Co. branding).
+          </p>
+          <div class="shot-grid">
+            <figure class="shot">
+              <img
+                src="../assets/projects/shiftboard/dashboard.png"
+                alt="ShiftBoard dashboard with weekly KPIs, today's shifts, and conflict alerts"
+                width="1280"
+                height="800"
+                loading="lazy"
+              />
+              <figcaption>Dashboard</figcaption>
+            </figure>
+            <figure class="shot">
+              <img
+                src="../assets/projects/shiftboard/schedule.png"
+                alt="ShiftBoard weekly schedule grid with shift chips and conflict icons"
+                width="1280"
+                height="800"
+                loading="lazy"
+              />
+              <figcaption>Schedule</figcaption>
+            </figure>
+            <figure class="shot">
+              <img
+                src="../assets/projects/shiftboard/coverage.png"
+                alt="ShiftBoard coverage matrix with covered, short, and overstaffed slots"
+                width="1280"
+                height="800"
+                loading="lazy"
+              />
+              <figcaption>Coverage</figcaption>
+            </figure>
+            <figure class="shot">
+              <img
+                src="../assets/projects/shiftboard/reports.png"
+                alt="ShiftBoard reports page with weekly summary and hours by employee"
+                width="1280"
+                height="800"
+                loading="lazy"
+              />
+              <figcaption>Reports</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="demo" class="section">
+        <div class="container narrow case-block reveal">
+          <h2>Demo video</h2>
+          <p class="section-lede">
+            A quick walkthrough of ShiftBoard across dashboard, schedule,
+            coverage, reports, and employees.
+          </p>
+          <div class="demo-video">
+            <video
+              controls
+              playsinline
+              preload="metadata"
+              poster="../assets/projects/shiftboard/dashboard.png"
+            >
+              <source
+                src="../assets/projects/shiftboard/ShiftBoardDemo.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support embedded video.
+              <a href="../assets/projects/shiftboard/ShiftBoardDemo.mp4"
+                >Download the demo</a
+              >.
+            </video>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container narrow case-block reveal">
+          <h2>Live app</h2>
+          <p class="section-lede">
+            Try the local-first prototype in the browser — demo data loads on
+            first visit so you can explore conflicts, coverage, and publish
+            without signing in.
+          </p>
+          <p>
+            <a
+              class="btn btn-primary"
+              href="https://flowpilot-labs.github.io/ShiftBoard/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Open live app</a
+            >
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="year"></span> Byron Baleda</p>
+      </div>
+    </footer>
+
+    <script src="../scripts/main.js" defer></script>
+  </body>
+</html>

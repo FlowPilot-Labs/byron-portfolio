@@ -12,7 +12,8 @@ byron-portfolio/
 ├── index.html                 # Home: hero, work, about, resume, contact
 ├── projects/
 │   ├── finden.html            # FinDen case study
-│   └── fleetpilot.html        # FleetPilot case study
+│   ├── fleetpilot.html        # FleetPilot case study
+│   └── shiftboard.html        # ShiftBoard case study
 ├── assets/
 │   ├── favicon.svg / .png     # Browser tab icon
 │   ├── apple-touch-icon.png   # iOS home-screen icon
@@ -39,6 +40,12 @@ architecture, technologies, screenshots, demo video, and live app link.
 
 - Case study: [`projects/fleetpilot.html`](projects/fleetpilot.html)
 - Live app: https://flowpilot-labs.github.io/fleetpilot/
+
+**ShiftBoard** — local-first employee scheduling prototype.
+
+- Case study: [`projects/shiftboard.html`](projects/shiftboard.html)
+- Live app: https://flowpilot-labs.github.io/ShiftBoard/
+- Demo video: [`assets/projects/shiftboard/ShiftBoardDemo.mp4`](assets/projects/shiftboard/ShiftBoardDemo.mp4)
 
 Two extra project cards (Client Portal, AI Automation) stay in the DOM with
 `hidden` until real case studies are ready. Remove `hidden` on those
