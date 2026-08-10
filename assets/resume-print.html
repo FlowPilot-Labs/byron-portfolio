@@ -1,328 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Byron Baleda — Resume</title>
-    <style>
-      @page {
-        size: Letter;
-        margin: 0.38in 0.55in;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <title>Byron Baleda — Resume (Split Header)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    @page {
+      size: A4;
+      margin: 0;
+    }
 
-      * {
-        box-sizing: border-box;
-      }
+    :root {
+      --ink: #1a2229;
+      --muted: #66747f;
+      --header: #2b3d4f;
+      --accent: #a68b4b;
+      --paper: #faf9f6;
+      --line: #e3ddd2;
+    }
 
-      body {
-        margin: 0;
-        color: #1b2430;
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-size: 9pt;
-        line-height: 1.28;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-      header {
-        border-bottom: 2.5px solid #0f8a6b;
-        padding-bottom: 7px;
-        margin-bottom: 8px;
-      }
+    body {
+      font-family: Manrope, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      font-size: 9.55pt;
+      line-height: 1.3;
+    }
 
-      h1 {
-        margin: 0;
-        font-size: 19.5pt;
-        letter-spacing: -0.03em;
-        line-height: 1.05;
-        color: #0f172a;
-      }
+    .banner {
+      background: var(--header);
+      color: #fff;
+      padding: 0.3in 0.48in 0.22in;
+    }
 
-      .role {
-        margin: 2px 0 0;
-        font-size: 10.25pt;
-        font-weight: 700;
-        color: #0f8a6b;
-      }
+    .banner h1 {
+      font-size: 27pt;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
 
-      .meta {
-        margin: 3px 0 0;
-        color: #5a6a7d;
-        font-size: 8.4pt;
-      }
+    .banner .title {
+      margin-top: 3pt;
+      font-size: 9.6pt;
+      font-weight: 500;
+      line-height: 1.22;
+      color: #d6c08a;
+      max-width: 100%;
+    }
 
-      .links {
-        margin: 2px 0 0;
-        font-size: 8.4pt;
-      }
+    .banner .location {
+      margin-top: 3pt;
+      font-size: 8.1pt;
+      color: #b7c3cd;
+      max-width: 6.8in;
+      line-height: 1.3;
+    }
 
-      .links a {
-        color: #1b2430;
-        text-decoration: none;
-      }
+    .body {
+      display: grid;
+      grid-template-columns: 1fr 1.9in;
+      gap: 0.24in;
+      padding: 0.24in 0.48in 0.26in;
+    }
 
-      h2 {
-        margin: 8px 0 4px;
-        font-size: 8.75pt;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: #0f8a6b;
-        border-bottom: 1px solid #d5dde6;
-        padding-bottom: 2px;
-      }
+    .summary {
+      grid-column: 1 / -1;
+      font-size: 9.6pt;
+      line-height: 1.34;
+      padding-bottom: 6pt;
+      border-bottom: 1.25pt solid var(--accent);
+      margin-bottom: 1pt;
+    }
 
-      .summary {
-        margin: 0 0 5px;
-        color: #334155;
-      }
+    h2 {
+      font-size: 8.3pt;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--header);
+      margin: 6pt 0 4pt;
+    }
 
-      .skills-top {
-        margin: 0;
-        padding: 5px 7px;
-        background: #eef7f3;
-        border-left: 3px solid #0f8a6b;
-        color: #1b2430;
-        font-size: 8.5pt;
-      }
+    .rail h2 {
+      color: var(--accent);
+      margin-top: 0;
+    }
 
-      .skills-top strong {
-        color: #0f8a6b;
-      }
+    .rail h2 + * {
+      margin-bottom: 0;
+    }
 
-      .job {
-        margin: 0 0 5px;
-        break-inside: avoid;
-      }
+    .rail-block {
+      margin-bottom: 10pt;
+    }
 
-      .job-head {
-        display: flex;
-        justify-content: space-between;
-        gap: 12px;
-        align-items: baseline;
-      }
+    .rail-block:last-child {
+      margin-bottom: 0;
+    }
 
-      .job-title {
-        margin: 0;
-        font-size: 9.6pt;
-        font-weight: 700;
-        color: #0f172a;
-      }
+    .job {
+      margin-bottom: 4pt;
+      page-break-inside: avoid;
+    }
 
-      .job-company {
-        margin: 0;
-        font-weight: 600;
-        color: #334155;
-        font-size: 8.9pt;
-      }
+    .job-compact {
+      margin-bottom: 3.5pt;
+    }
 
-      .job-dates {
-        flex-shrink: 0;
-        font-size: 8.4pt;
-        font-weight: 700;
-        color: #0f8a6b;
-        white-space: nowrap;
-      }
+    .earlier-note,
+    .project-note {
+      font-size: 8.7pt;
+      color: #2a333a;
+      line-height: 1.28;
+    }
 
-      .job ul {
-        margin: 1px 0 0;
-        padding-left: 1.05em;
-        color: #475569;
-      }
+    .project-note strong {
+      font-weight: 700;
+      color: var(--ink);
+    }
 
-      .job li {
-        margin: 0;
-      }
+    .job-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 8pt;
+      align-items: baseline;
+    }
 
-      .edu {
-        margin: 0;
-      }
+    .role {
+      font-weight: 700;
+      font-size: 10.1pt;
+    }
 
-      .edu strong {
-        color: #0f172a;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1>Byron Baleda</h1>
-      <p class="role">Backend &amp; Business Applications</p>
-      <p class="meta">
-        Based in the Philippines · UK product companies (Tribal Group, Lendsoft)
-        · US-facing enterprise work (Pointwest) · Open to global remote clients
-      </p>
-      <p class="links">
-        <a href="mailto:byrzbal@gmail.com">byrzbal@gmail.com</a>
-        ·
-        <a href="https://www.linkedin.com/in/byronbaleda/"
-          >linkedin.com/in/byronbaleda</a
-        >
-        ·
-        <a href="https://github.com/byrzbal">github.com/byrzbal</a>
-        ·
-        <a href="https://flowpilot-labs.github.io/byron-portfolio/">flowpilot-labs.github.io/byron-portfolio</a>
-      </p>
-    </header>
+    .dates {
+      font-size: 8.1pt;
+      color: var(--muted);
+      white-space: nowrap;
+      font-weight: 500;
+    }
 
-    <h2>Summary</h2>
-    <p class="summary">
-      Backend-focused engineer and team lead who builds modern business
-      applications that turn complex processes into reliable, maintainable
-      software. Strong .NET and SQL foundation, with a pragmatic approach:
-      understand the problem first, then design systems people can depend on.
-    </p>
-    <p class="skills-top">
-      <strong>Core skills:</strong> ASP.NET Core · C# · SQL / T-SQL · REST APIs ·
-      Angular · Business Applications · Agile · Team Leadership
-    </p>
+    .company {
+      font-size: 8.9pt;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 0.4pt 0 1pt;
+    }
 
-    <h2>Experience</h2>
+    ul { padding-left: 22pt; }
+    li { margin-bottom: 0.4pt; color: #2a333a; }
 
-    <article class="job">
-      <div class="job-head">
-        <div>
-          <p class="job-title">Development Team Lead</p>
-          <p class="job-company">Tribal Group</p>
+    .rail {
+      border-left: 1.5pt solid var(--accent);
+      padding-left: 10pt;
+    }
+
+    .skill-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skill-list li {
+      font-size: 8.6pt;
+      padding: 2.5pt 0;
+      border-bottom: 0.6pt solid var(--line);
+      color: #2f3a42;
+      margin: 0;
+    }
+
+    .skill-list li:last-child { border-bottom: 0; }
+
+    .edu {
+      font-size: 8.6pt;
+      line-height: 1.32;
+      color: #2f3a42;
+    }
+
+    .edu strong {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 2pt;
+      color: var(--ink);
+    }
+
+    .link-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .link-list li {
+      margin: 0 0 6pt;
+      padding: 0;
+      border: 0;
+      color: #2f3a42;
+    }
+
+    .link-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .link-list .label {
+      display: block;
+      font-size: 7.3pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1pt;
+    }
+
+    .link-list a {
+      display: block;
+      font-size: 7.8pt;
+      line-height: 1.28;
+      color: var(--ink);
+      text-decoration: none;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+  <header class="banner">
+    <h1>Byron Baleda</h1>
+    <p class="title">Development Team Lead | Hands-on Software Engineer | Backend &amp; Business Applications</p>
+    <p class="location">Based in the Philippines · Open to global remote clients</p>
+  </header>
+
+  <div class="body">
+    <p class="summary">Backend-focused engineer and team lead who builds modern business applications that turn complex processes into reliable, maintainable software. Strong .NET and SQL foundation, with a pragmatic approach: understand the problem first, then design systems people can depend on.</p>
+
+    <main>
+      <h2>Experience</h2>
+
+      <article class="job">
+        <div class="job-head">
+          <div class="role">Development Team Lead</div>
+          <div class="dates">Sep 2017 — Present</div>
         </div>
-        <p class="job-dates">Sep 2017 — Present</p>
-      </div>
-      <ul>
-        <li>
-          Led a cross-functional development and testing team, introducing
-          delivery-tracking processes that surfaced risks and blockers early,
-          improving release predictability.
-        </li>
-        <li>
-          Coordinated with Product Owners and other development teams to manage
-          dependencies, resolve blockers, and maintain alignment across business
-          and technical priorities.
-        </li>
-        <li>
-          Delivered successful releases covering planned PBIs while reducing the
-          team's bug backlog, balancing new feature delivery with ongoing
-          product quality.
-        </li>
-        <li>
-          Built the next generation of technical leadership, mentoring three
-          developers who progressed into Development Team Lead roles and
-          supporting junior developers in their progression to senior positions.
-        </li>
-      </ul>
-    </article>
+        <div class="company">Tribal Group</div>
+        <ul>
+          <li>Lead a 6-person cross-functional team (4 developers, 2 QA) within a multi-team product organization, introducing delivery-tracking processes that surface risks and blockers early and improve release predictability.</li>
+          <li>Mentor developers into stronger technical leadership — including three who progressed into Development Team Lead roles — and support juniors toward senior positions.</li>
+          <li>Drive quality improvement across the broader product organization, delivering planned release scope while reducing defect backlog; team's quality-improvement work was internally recognized across the product organization.</li>
+        </ul>
+      </article>
 
-    <article class="job">
-      <div class="job-head">
-        <div>
-          <p class="job-title">Senior Software Developer</p>
-          <p class="job-company">Tribal Group</p>
+      <article class="job">
+        <div class="job-head">
+          <div class="role">Senior Software Developer</div>
+          <div class="dates">Aug 2015 — Sep 2017</div>
         </div>
-        <p class="job-dates">Aug 2015 — Sep 2017</p>
-      </div>
-      <ul>
-        <li>
-          Designed and developed .NET applications, APIs, and T-SQL data layers
-          for complex business workflows, delivering maintainable solutions that
-          supported evolving product requirements and business needs.
-        </li>
-      </ul>
-    </article>
+        <div class="company">Tribal Group</div>
+        <ul>
+          <li>Designed and developed .NET applications, APIs, and T-SQL data layers for complex business workflows, delivering maintainable solutions that supported evolving product requirements.</li>
+          <li>Built APIs and data models that stayed reliable as product scope and business needs expanded.</li>
+        </ul>
+      </article>
 
-    <article class="job">
-      <div class="job-head">
-        <div>
-          <p class="job-title">Team Lead</p>
-          <p class="job-company">Lendsoft Solutions Inc.</p>
+      <article class="job">
+        <div class="job-head">
+          <div class="role">Team Lead</div>
+          <div class="dates">Jan 2014 — May 2015</div>
         </div>
-        <p class="job-dates">Jan 2014 — May 2015</p>
-      </div>
-      <ul>
-        <li>
-          Led a four-person development team within a larger delivery
-          organization, managing change requests for an existing product and
-          coordinating priorities to keep work moving.
-        </li>
-        <li>
-          Significantly reduced the backlog of pending change requests by
-          improving work prioritization, addressing blockers, and keeping the
-          team focused on completing outstanding requests.
-        </li>
-      </ul>
-    </article>
+        <div class="company">Lendsoft Solutions Inc.</div>
+        <ul>
+          <li>Led a 4-person development team delivering client software under real project timelines and changing priorities.</li>
+          <li>Unblocked engineers, coordinated delivery, and kept quality high across active workstreams.</li>
+        </ul>
+      </article>
 
-    <article class="job">
-      <div class="job-head">
-        <div>
-          <p class="job-title">Software Programmer</p>
-          <p class="job-company">Condor POS Solutions RP Inc.</p>
+      <article class="job job-compact">
+        <div class="job-head">
+          <div class="role">Earlier roles</div>
+          <div class="dates">2013</div>
         </div>
-        <p class="job-dates">Jun 2013 — Dec 2013</p>
-      </div>
-      <ul>
-        <li>
-          Designed and implemented a new product feature using ASP.NET MVC,
-          introducing the framework into a product suite previously built
-          primarily on traditional ASP.NET and establishing a new development
-          approach for the application.
-        </li>
-      </ul>
-    </article>
+        <div class="company">Condor POS Solutions RP Inc. · RealPage, Inc.</div>
+        <p class="earlier-note">Software Programmer and Software Developer roles delivering ASP.NET MVC and property-technology product features within established delivery practices.</p>
+      </article>
 
-    <article class="job">
-      <div class="job-head">
-        <div>
-          <p class="job-title">Software Developer</p>
-          <p class="job-company">RealPage, Inc.</p>
+      <article class="job">
+        <div class="job-head">
+          <div class="role">.NET Software Engineer</div>
+          <div class="dates">Nov 2007 — Dec 2012</div>
         </div>
-        <p class="job-dates">Mar 2013 — Jun 2013</p>
-      </div>
-      <ul>
-        <li>
-          Contributed features for a global property-technology product within
-          established engineering and release practices.
-        </li>
-      </ul>
-    </article>
+        <div class="company">Pointwest Technologies</div>
+        <ul>
+          <li>Designed and delivered .NET solutions for enterprise clients across multi-year engagements.</li>
+          <li>Led a development team for approximately two years, coordinating technical delivery while strengthening backend work in APIs, business logic, and data access.</li>
+        </ul>
+      </article>
 
-    <article class="job">
-      <div class="job-head">
-        <div>
-          <p class="job-title">.NET Software Engineer</p>
-          <p class="job-company">Pointwest Technologies</p>
+      <article class="job">
+        <div class="job-head">
+          <div class="role">IT Head / Thesis Coordinator / Instructor</div>
+          <div class="dates">Jun 2000 — Oct 2007</div>
         </div>
-        <p class="job-dates">Nov 2007 — Dec 2012</p>
-      </div>
-      <ul>
-        <li>
-          Developed .NET solutions across multiple enterprise projects,
-          including a long-term engagement involving real-time processing of
-          credit-card transactions and targeted SMS/email marketing campaigns
-          for participating merchants.
-        </li>
-        <li>
-          Led one of the development teams for approximately two years,
-          coordinating technical delivery and supporting the team in meeting
-          project requirements and deadlines.
-        </li>
-      </ul>
-    </article>
+        <div class="company">STI College</div>
+        <ul>
+          <li>Led campus IT operations while teaching Computer Science and guiding student thesis projects.</li>
+        </ul>
+      </article>
 
-    <article class="job">
-      <div class="job-head">
-        <div>
-          <p class="job-title">IT Head / Thesis Coordinator / Instructor</p>
-          <p class="job-company">STI College</p>
-        </div>
-        <p class="job-dates">Jun 2000 — Oct 2007</p>
-      </div>
-      <ul>
-        <li>
-          Led campus IT operations while teaching Computer Science and guiding
-          student thesis projects.
-        </li>
-      </ul>
-    </article>
+      <h2>Selected Work</h2>
 
-    <h2>Education</h2>
-    <p class="edu">
-      <strong>Bachelor’s degree, Computer Science</strong> · STI College Legazpi
-    </p>
-  </body>
+      <article class="job job-compact">
+        <div class="role">Independent product work</div>
+        <p class="project-note"><strong>FinDen</strong> — Local-first personal finance for Android and web (Kotlin, React, TypeScript).</p>
+        <p class="project-note"><strong>FleetPilot</strong> — Local-first trucking management prototype (Angular, TypeScript, IndexedDB).</p>
+        <p class="project-note"><strong>ShiftBoard</strong> — Local-first employee scheduling prototype (React, TypeScript, IndexedDB).</p>
+      </article>
+    </main>
+
+    <aside class="rail">
+      <div class="rail-block">
+        <h2>Education</h2>
+        <p class="edu"><strong>Bachelor’s degree, Computer Science</strong>STI College Legazpi</p>
+      </div>
+
+      <div class="rail-block">
+        <h2>Skills</h2>
+        <ul class="skill-list">
+          <li>ASP.NET Core</li>
+          <li>ASP.NET</li>
+          <li>ASP.NET MVC</li>
+          <li>C#</li>
+          <li>SQL / T-SQL</li>
+          <li>REST APIs</li>
+          <li>Angular</li>
+        </ul>
+      </div>
+
+      <div class="rail-block">
+        <h2>Links</h2>
+        <ul class="link-list">
+          <li>
+            <span class="label">Email</span>
+            <a href="mailto:byrzbal@gmail.com">byrzbal@gmail.com</a>
+          </li>
+          <li>
+            <span class="label">LinkedIn</span>
+            <a href="https://www.linkedin.com/in/byronbaleda/">linkedin.com/in/byronbaleda</a>
+          </li>
+          <li>
+            <span class="label">GitHub</span>
+            <a href="https://github.com/FlowPilot-Labs">github.com/FlowPilot-Labs</a>
+          </li>
+          <li>
+            <span class="label">Portfolio</span>
+            <a href="https://flowpilot-labs.github.io/byron-portfolio/">flowpilot-labs.github.io/byron-portfolio</a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</body>
 </html>

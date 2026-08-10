@@ -424,6 +424,17 @@ a:hover {
   margin-bottom: 0;
 }
 
+.work-intro {
+  max-width: 42rem;
+  margin: 0 auto 2.5rem;
+  text-align: left;
+}
+
+.work-intro strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
 .skills {
   list-style: none;
   display: flex;

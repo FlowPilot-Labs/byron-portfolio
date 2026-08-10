@@ -1,6 +1,6 @@
 # byron-portfolio
 
-Personal portfolio for [Byron Baleda](https://github.com/byrzbal) — static HTML/CSS/JS on GitHub Pages.
+Personal portfolio for [Byron Baleda](https://github.com/FlowPilot-Labs) — static HTML/CSS/JS on GitHub Pages.
 
 **Repo:** https://github.com/FlowPilot-Labs/byron-portfolio (private)  
 **Live:** https://flowpilot-labs.github.io/byron-portfolio/
@@ -47,10 +47,6 @@ architecture, technologies, screenshots, demo video, and live app link.
 - Case study: [`projects/shiftboard.html`](projects/shiftboard.html)
 - Live app: https://flowpilot-labs.github.io/ShiftBoard/
 - Demo video: [`assets/projects/shiftboard/ShiftBoardDemo.mp4`](assets/projects/shiftboard/ShiftBoardDemo.mp4)
-
-Two extra project cards (Client Portal, AI Automation) stay in the DOM with
-`hidden` until real case studies are ready. Remove `hidden` on those
-`<article class="project-card">` elements in `index.html` to show them.
 
 ## Theme
 
