@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="BookPilot Rooms — booking and room management for small Philippine accommodations. React, Cloudflare Workers, and D1 by Byron Baleda."
+    />
+    <title>BookPilot Rooms — Byron Baleda</title>
+
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="../assets/favicon.png" type="image/png" sizes="48x48" />
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Byron Baleda" />
+    <meta property="og:title" content="BookPilot Rooms — Byron Baleda" />
+    <meta
+      property="og:description"
+      content="Booking and room management for small Philippine accommodations — room calendar, Messenger confirmations, and payment ledger on Cloudflare."
+    />
+    <meta
+      property="og:url"
+      content="https://flowpilot-labs.github.io/byron-portfolio/projects/bookpilot-rooms.html"
+    />
+
+    <script>
+      try {
+        /* Auto theme by local time: day=5, night=13 */
+        var h = new Date().getHours();
+        var t = h >= 6 && h < 18 ? "5" : "13";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/themes.css" />
+  </head>
+  <body>
+    <!-- Theme picker kept in DOM but hidden via CSS. See index.html notes to restore. -->
+    <aside class="theme-picker" aria-label="Temporary theme switcher" hidden>
+      <span class="theme-picker-label">Theme</span>
+      <button type="button" data-theme-pick="1" title="1 Coastal slate">1</button>
+      <button type="button" data-theme-pick="2" title="2 Paper studio">2</button>
+      <button type="button" data-theme-pick="3" title="3 Sand &amp; forest">3</button>
+      <button type="button" data-theme-pick="4" title="4 Mist blueprint">4</button>
+      <button type="button" data-theme-pick="5" title="5 Clean alpine">5</button>
+      <button type="button" data-theme-pick="6" title="6 Fog harbor (gradient)">6</button>
+      <button type="button" data-theme-pick="7" title="7 Clay atelier">7</button>
+      <button type="button" data-theme-pick="8" title="8 Sage ledger">8</button>
+      <button type="button" data-theme-pick="9" title="9 Dusk stone">9</button>
+      <button type="button" data-theme-pick="10" title="10 Parchment desk">10</button>
+      <button type="button" data-theme-pick="11" title="11 Soft harbor (soft dark)">11</button>
+      <button type="button" data-theme-pick="12" title="12 Soft ember (soft dark)">12</button>
+      <button type="button" data-theme-pick="13" title="13 Soft steel (soft dark)">13</button>
+      <button type="button" data-theme-pick="14" title="14 Soft moss (soft dark)">14</button>
+      <button type="button" data-theme-pick="15" title="15 Soft graphite (soft dark)">15</button>
+    </aside>
+
+    <a class="skip-link" href="#project">Skip to content</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../index.html">Byron Baleda</a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="Open menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a href="../index.html#home">Home</a>
+          <a href="../index.html#work">Work</a>
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#resume">Resume</a>
+          <a href="../index.html#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="project" class="project-page">
+      <section class="section project-hero">
+        <div class="container narrow">
+          <p class="section-eyebrow reveal">
+            <a class="back-link" href="../index.html#work">← Featured work</a>
+          </p>
+          <h1 class="project-title reveal">BookPilot Rooms</h1>
+          <p class="project-summary reveal">
+            A booking and room-management app for small Philippine
+            accommodations — record Messenger-confirmed stays, keep a room
+            calendar, track deposits and balances, and copy confirmations back
+            to guests. Built for the web with React, Cloudflare Workers, and D1.
+          </p>
+          <div class="hero-actions reveal">
+            <a
+              class="btn btn-primary"
+              href="https://bookpilot-rooms-web.pages.dev/demo?t=bpr-demo-8k2mQn9vL4xR"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Open live demo</a
+            >
+            <a class="btn btn-ghost" href="#demo">Demo video</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container narrow case-block reveal">
+          <h2>Problem</h2>
+          <div class="prose">
+            <p>
+              Small guesthouses and room-for-rent businesses in the Philippines
+              often confirm bookings through Facebook and Messenger, then track
+              availability, payments, and check-ins in notebooks, spreadsheets,
+              or chat threads. That makes it hard to see which rooms are free,
+              what balances are still owed, and who is arriving or leaving today
+              — especially when the owner is juggling front-desk work on a
+              laptop or phone.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow case-block reveal">
+          <h2>Solution</h2>
+          <div class="prose">
+            <p>
+              BookPilot Rooms is the business record after a guest confirms in
+              Messenger. Owners record stays on a room calendar, move bookings
+              through hold → confirmed → checked-in → checked-out, track
+              deposits and balances in a payment ledger (cash, GCash, Maya, bank
+              transfer), and copy a clean confirmation message back to chat.
+              A daily dashboard answers “what happened today?” with check-ins,
+              check-outs, occupancy, open balances, and payment breakdowns.
+              Multi-room bookings, room blocks, guest history, CSV exports, and
+              staff invites round out the pilot — desktop-first, with a usable
+              stacked layout on phone.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container narrow case-block reveal">
+          <h2>Architecture</h2>
+          <div class="prose">
+            <p>
+              BookPilot Rooms is a monorepo with a React + Vite web app, a Hono
+              API on Cloudflare Workers, and pure TypeScript domain rules in
+              <code>packages/domain</code>. The browser never talks to D1
+              directly — it calls a versioned JSON API at
+              <code>/api/v1</code> with session cookies, and every query is
+              scoped by property membership.
+            </p>
+            <p>
+              Drizzle ORM manages the D1 schema and migrations; money is stored
+              as integer centavos; dates render in
+              <code>Asia/Manila</code>. Conflict checks, lifecycle rules, and
+              balance math live in domain services with Vitest coverage. OpenAPI
+              docs stay in sync with registered routes. Cloudflare Pages hosts
+              the web shell with a service binding to the API Worker; local dev
+              mirrors production with Wrangler D1 local mode and SQLite.
+            </p>
+          </div>
+
+          <figure class="arch-diagram" aria-label="BookPilot Rooms architecture overview">
+            <div class="arch-layer">
+              <p class="arch-layer-label">Web app</p>
+              <div class="arch-row arch-row-2">
+                <div class="arch-node">
+                  <strong>Operations</strong>
+                  <span>Dashboard · Calendar · Bookings</span>
+                  <span>Guests · Rooms · Payments</span>
+                </div>
+                <div class="arch-node">
+                  <strong>Property admin</strong>
+                  <span>Reports · Exports · Settings</span>
+                  <span>Invites · Members · Audit</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="arch-flow" aria-hidden="true"></div>
+
+            <div class="arch-layer arch-layer-accent">
+              <p class="arch-layer-label">Domain services</p>
+              <div class="arch-node arch-node-wide">
+                <strong>Availability · Multi-room bookings · Lifecycle · Payments</strong>
+                <span>Pure TypeScript in packages/domain — conflict, balance, and breakfast rules</span>
+              </div>
+            </div>
+
+            <div class="arch-flow" aria-hidden="true"></div>
+
+            <div class="arch-layer">
+              <p class="arch-layer-label">API · Auth · Storage</p>
+              <div class="arch-row arch-row-2">
+                <div class="arch-node">
+                  <strong>Hono Worker</strong>
+                  <span>/api/v1 · Session auth · OpenAPI</span>
+                </div>
+                <div class="arch-node">
+                  <strong>Cloudflare D1</strong>
+                  <span>Rooms · Guests · Bookings · Payments</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="arch-flow" aria-hidden="true"></div>
+
+            <div class="arch-layer">
+              <p class="arch-layer-label">Delivery · Local dev</p>
+              <div class="arch-row arch-row-3">
+                <div class="arch-node">
+                  <strong>React + Vite + Tailwind</strong>
+                  <span>Desktop-first · React Router</span>
+                </div>
+                <div class="arch-node">
+                  <strong>Cloudflare Pages</strong>
+                  <span>Web + API service binding</span>
+                </div>
+                <div class="arch-node">
+                  <strong>Wrangler + D1 local</strong>
+                  <span>Same migrations · Seed data · Vitest</span>
+                </div>
+              </div>
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container narrow case-block reveal">
+          <h2>Technologies</h2>
+          <ul class="skills">
+            <li>React</li>
+            <li>TypeScript</li>
+            <li>Vite</li>
+            <li>Tailwind CSS</li>
+            <li>React Router</li>
+            <li>Hono</li>
+            <li>Cloudflare Workers</li>
+            <li>Cloudflare D1</li>
+            <li>Drizzle ORM</li>
+            <li>OpenAPI</li>
+            <li>Redocly</li>
+            <li>Vitest</li>
+            <li>Cloudflare Pages</li>
+            <li>Wrangler</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container case-block reveal">
+          <h2>Screenshots</h2>
+          <p class="section-lede">
+            Dashboard, room calendar, bookings list, and payment ledger from
+            the live demo (Maria's Beach Rooms, Bantayan).
+          </p>
+          <div class="shot-grid">
+            <figure class="shot">
+              <img
+                src="../assets/projects/bookpilot-rooms/dashboard.png"
+                alt="BookPilot Rooms dashboard with today's arrivals, departures, occupancy, open balances, and breakfast summary"
+                width="1280"
+                height="800"
+                loading="lazy"
+              />
+              <figcaption>Dashboard</figcaption>
+            </figure>
+            <figure class="shot">
+              <img
+                src="../assets/projects/bookpilot-rooms/calendar.png"
+                alt="BookPilot Rooms room calendar with availability grid, booking bars, and date range controls"
+                width="1280"
+                height="800"
+                loading="lazy"
+              />
+              <figcaption>Room calendar</figcaption>
+            </figure>
+            <figure class="shot">
+              <img
+                src="../assets/projects/bookpilot-rooms/bookings.png"
+                alt="BookPilot Rooms bookings list with status filters, guest names, and stay dates"
+                width="1280"
+                height="800"
+                loading="lazy"
+              />
+              <figcaption>Bookings</figcaption>
+            </figure>
+            <figure class="shot">
+              <img
+                src="../assets/projects/bookpilot-rooms/payments.png"
+                alt="BookPilot Rooms payments page showing outstanding balances grouped by booking"
+                width="1280"
+                height="800"
+                loading="lazy"
+              />
+              <figcaption>Payments</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="demo" class="section">
+        <div class="container narrow case-block reveal">
+          <h2>Demo video</h2>
+          <p class="section-lede">
+            A quick walkthrough across dashboard, calendar, bookings, and
+            payments on the live demo.
+          </p>
+          <div class="demo-video">
+            <video
+              controls
+              playsinline
+              preload="metadata"
+              poster="../assets/projects/bookpilot-rooms/dashboard.png"
+            >
+              <source
+                src="../assets/projects/bookpilot-rooms/BookPilotRoomsDemo.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support embedded video.
+              <a href="../assets/projects/bookpilot-rooms/BookPilotRoomsDemo.mp4"
+                >Download the demo</a
+              >.
+            </video>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container narrow case-block reveal">
+          <h2>Live app</h2>
+          <p class="section-lede">
+            Open the public demo — the link signs you in automatically to Maria's
+            Beach Rooms without entering a password.
+          </p>
+          <p>
+            <a
+              class="btn btn-primary"
+              href="https://bookpilot-rooms-web.pages.dev/demo?t=bpr-demo-8k2mQn9vL4xR"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Open live demo</a
+            >
+          </p>
+        </div>
+      </section>
+
+      <section class="section contact-cta project-cta">
+        <div class="container narrow centered-block">
+          <header class="section-header centered reveal">
+            <h2>Need something like this?</h2>
+            <p class="section-lede">
+              If this is close to what you need, let’s talk about building a
+              version tailored to your needs.
+            </p>
+          </header>
+          <div class="contact-actions reveal">
+            <a class="btn btn-primary" href="mailto:byrzbal@gmail.com"
+              >Get in touch</a
+            >
+          </div>
+          <div class="contact-block reveal">
+            <a class="contact-email" href="mailto:byrzbal@gmail.com"
+              >byrzbal@gmail.com</a
+            >
+            <ul class="social-links">
+              <li>
+                <a
+                  href="https://github.com/FlowPilot-Labs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub · FlowPilot-Labs</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/byronbaleda/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >LinkedIn · byronbaleda</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="year"></span> Byron Baleda</p>
+      </div>
+    </footer>
+
+    <script src="../scripts/main.js" defer></script>
+  </body>
+</html>

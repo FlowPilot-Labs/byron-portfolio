@@ -13,7 +13,8 @@ byron-portfolio/
 ├── projects/
 │   ├── finden.html            # FinDen case study
 │   ├── fleetpilot.html        # FleetPilot case study
-│   └── shiftboard.html        # ShiftBoard case study
+│   ├── shiftboard.html        # ShiftBoard case study
+│   └── bookpilot-rooms.html   # BookPilot Rooms case study
 ├── assets/
 │   ├── favicon.svg / .png     # Browser tab icon
 │   ├── apple-touch-icon.png   # iOS home-screen icon
@@ -47,6 +48,12 @@ architecture, technologies, screenshots, demo video, and live app link.
 - Case study: [`projects/shiftboard.html`](projects/shiftboard.html)
 - Live app: https://flowpilot-labs.github.io/ShiftBoard/
 - Demo video: [`assets/projects/shiftboard/ShiftBoardDemo.mp4`](assets/projects/shiftboard/ShiftBoardDemo.mp4)
+
+**BookPilot Rooms** — booking and room management for small Philippine accommodations.
+
+- Case study: [`projects/bookpilot-rooms.html`](projects/bookpilot-rooms.html)
+- Live app: https://bookpilot-rooms-web.pages.dev/demo?t=bpr-demo-8k2mQn9vL4xR
+- Demo video: [`assets/projects/bookpilot-rooms/BookPilotRoomsDemo.mp4`](assets/projects/bookpilot-rooms/BookPilotRoomsDemo.mp4)
 
 ## Theme
 
