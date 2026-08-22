@@ -11,6 +11,7 @@
     .filter(Boolean);
   const year = document.querySelector("#year");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let closeShotLightbox = null;
 
   if (year) {
     year.textContent = String(new Date().getFullYear());
@@ -33,7 +34,10 @@
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") setMenuOpen(false);
+    if (event.key === "Escape") {
+      if (closeShotLightbox?.()) return;
+      setMenuOpen(false);
+    }
   });
 
   // Active section highlight
@@ -148,4 +152,78 @@
   themeButtons.forEach((btn) => {
     btn.addEventListener("click", () => applyTheme(btn.dataset.themePick));
   });
+
+  // Screenshot lightbox — all project pages use `.shot img`
+  const shotImages = [...document.querySelectorAll(".shot img")];
+  if (shotImages.length > 0) {
+    const lightbox = document.createElement("div");
+    lightbox.className = "shot-lightbox";
+    lightbox.setAttribute("aria-hidden", "true");
+    lightbox.innerHTML = `
+      <div class="shot-lightbox__backdrop" data-shot-lightbox-close></div>
+      <figure class="shot-lightbox__dialog">
+        <button
+          type="button"
+          class="shot-lightbox__close"
+          aria-label="Close image"
+          data-shot-lightbox-close
+        >&times;</button>
+        <img class="shot-lightbox__img" alt="" />
+        <figcaption class="shot-lightbox__caption"></figcaption>
+      </figure>
+    `;
+    document.body.appendChild(lightbox);
+
+    const lightboxImg = lightbox.querySelector(".shot-lightbox__img");
+    const lightboxCaption = lightbox.querySelector(".shot-lightbox__caption");
+    const closeBtn = lightbox.querySelector(".shot-lightbox__close");
+    let lastFocus = null;
+
+    function openShotLightbox(img) {
+      const figure = img.closest(".shot");
+      const caption = figure?.querySelector("figcaption");
+      lastFocus = document.activeElement;
+      lightboxImg.src = img.currentSrc || img.src;
+      lightboxImg.alt = img.alt;
+      lightboxCaption.textContent = caption?.textContent?.trim() || img.alt;
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      closeBtn.focus();
+    }
+
+    closeShotLightbox = () => {
+      if (!lightbox.classList.contains("is-open")) return false;
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      lightboxImg.removeAttribute("src");
+      document.body.style.overflow = "";
+      if (lastFocus instanceof HTMLElement) {
+        lastFocus.focus();
+      }
+      return true;
+    };
+
+    shotImages.forEach((img) => {
+      img.classList.add("shot-zoomable");
+      img.setAttribute("tabindex", "0");
+      img.setAttribute("role", "button");
+      const figure = img.closest(".shot");
+      const caption = figure?.querySelector("figcaption");
+      const label = caption?.textContent?.trim() || img.alt || "Screenshot";
+      img.setAttribute("aria-label", `View larger: ${label}`);
+
+      img.addEventListener("click", () => openShotLightbox(img));
+      img.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openShotLightbox(img);
+        }
+      });
+    });
+
+    lightbox.querySelectorAll("[data-shot-lightbox-close]").forEach((el) => {
+      el.addEventListener("click", () => closeShotLightbox());
+    });
+  }
 })();

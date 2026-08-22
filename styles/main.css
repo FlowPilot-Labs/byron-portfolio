@@ -736,6 +736,142 @@ a:hover {
   background: var(--ink-elevated);
 }
 
+.shot img.shot-zoomable {
+  cursor: zoom-in;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.shot img.shot-zoomable:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+.shot img.shot-zoomable:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 3px;
+}
+
+.shot-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+}
+
+.shot-lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.shot-lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--ink) 72%, transparent);
+  backdrop-filter: blur(4px);
+}
+
+.shot-lightbox__dialog {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: min(96vw, 1400px);
+  max-height: 92vh;
+  margin: 0;
+}
+
+.shot-lightbox__close {
+  position: absolute;
+  top: -0.25rem;
+  right: -0.25rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--ink) 20%, transparent);
+}
+
+.shot-lightbox__close:hover {
+  background: var(--surface-muted);
+}
+
+.shot-lightbox__close:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 2px;
+}
+
+.shot-lightbox__img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(92vh - 3rem);
+  width: auto;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--ink-elevated);
+  box-shadow: 0 16px 48px color-mix(in srgb, var(--ink) 35%, transparent);
+}
+
+.shot-lightbox__caption {
+  margin: 0;
+  max-width: 100%;
+  color: var(--surface);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  text-shadow: 0 1px 2px color-mix(in srgb, var(--ink) 40%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shot img.shot-zoomable {
+    transition: none;
+  }
+
+  .shot img.shot-zoomable:hover {
+    transform: none;
+  }
+
+  .shot-lightbox {
+    transition: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .shot-lightbox {
+    padding: 0.75rem;
+  }
+
+  .shot-lightbox__close {
+    top: 0.25rem;
+    right: 0.25rem;
+  }
+
+  .shot-lightbox__img {
+    max-height: calc(88vh - 3rem);
+  }
+}
+
 .shot figcaption {
   margin-top: 0.45rem;
   color: var(--text-muted);
