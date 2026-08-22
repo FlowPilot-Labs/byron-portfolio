@@ -157,37 +157,37 @@
           <h2>Architecture</h2>
           <div class="prose">
             <p>
-              BookPilot Rooms is a monorepo with a React + Vite web app, a Hono
-              API on Cloudflare Workers, and pure TypeScript domain rules in
-              <code>packages/domain</code>. The browser never talks to D1
-              directly — it calls a versioned JSON API at
-              <code>/api/v1</code> with session cookies, and every query is
-              scoped by property membership.
+              BookPilot Rooms is a web app for small guesthouses and room rentals
+              — record bookings after a guest confirms in Messenger, see which
+              rooms are free on a calendar, track deposits and balances, and copy
+              confirmation messages back to chat. It opens in the browser on a
+              laptop or phone, with a public demo that signs you in automatically
+              so you can explore without a password.
             </p>
             <p>
-              Drizzle ORM manages the D1 schema and migrations; money is stored
-              as integer centavos; dates render in
-              <code>Asia/Manila</code>. Conflict checks, lifecycle rules, and
-              balance math live in domain services with Vitest coverage. OpenAPI
-              docs stay in sync with registered routes. Cloudflare Pages hosts
-              the web shell with a service binding to the API Worker; local dev
-              mirrors production with Wrangler D1 local mode and SQLite.
+              Each property’s data stays private — staff only see their own
+              rooms, guests, and payments. Availability, booking status, and
+              balance math are checked automatically so double-bookings and
+              wrong totals are caught early. The app and backend run on
+              Cloudflare’s global network (no server to maintain), with bookings
+              and payments in a managed database and dates shown in Philippine
+              time.
             </p>
           </div>
 
           <figure class="arch-diagram" aria-label="BookPilot Rooms architecture overview">
             <div class="arch-layer">
-              <p class="arch-layer-label">Web app</p>
+              <p class="arch-layer-label">Daily operations</p>
               <div class="arch-row arch-row-2">
                 <div class="arch-node">
-                  <strong>Operations</strong>
-                  <span>Dashboard · Calendar · Bookings</span>
-                  <span>Guests · Rooms · Payments</span>
+                  <strong>Front desk</strong>
+                  <span>Dashboard · calendar · bookings</span>
+                  <span>Guests · rooms · payments</span>
                 </div>
                 <div class="arch-node">
                   <strong>Property admin</strong>
-                  <span>Reports · Exports · Settings</span>
-                  <span>Invites · Members · Audit</span>
+                  <span>Reports · exports · settings</span>
+                  <span>Team invites · members</span>
                 </div>
               </div>
             </div>
@@ -195,25 +195,25 @@
             <div class="arch-flow" aria-hidden="true"></div>
 
             <div class="arch-layer arch-layer-accent">
-              <p class="arch-layer-label">Domain services</p>
+              <p class="arch-layer-label">Business rules</p>
               <div class="arch-node arch-node-wide">
-                <strong>Availability · Multi-room bookings · Lifecycle · Payments</strong>
-                <span>Pure TypeScript in packages/domain — conflict, balance, and breakfast rules</span>
+                <strong>Availability · balances · booking lifecycle</strong>
+                <span>Conflict and payment checks before you confirm a stay</span>
               </div>
             </div>
 
             <div class="arch-flow" aria-hidden="true"></div>
 
             <div class="arch-layer">
-              <p class="arch-layer-label">API · Auth · Storage</p>
+              <p class="arch-layer-label">Secure backend</p>
               <div class="arch-row arch-row-2">
                 <div class="arch-node">
-                  <strong>Hono Worker</strong>
-                  <span>/api/v1 · Session auth · OpenAPI</span>
+                  <strong>Sign-in · bookings · payments</strong>
+                  <span>Each property’s data stays private</span>
                 </div>
                 <div class="arch-node">
-                  <strong>Cloudflare D1</strong>
-                  <span>Rooms · Guests · Bookings · Payments</span>
+                  <strong>Cloud database</strong>
+                  <span>Rooms · guests · stays · payments</span>
                 </div>
               </div>
             </div>
@@ -221,19 +221,19 @@
             <div class="arch-flow" aria-hidden="true"></div>
 
             <div class="arch-layer">
-              <p class="arch-layer-label">Delivery · Local dev</p>
+              <p class="arch-layer-label">Hosting · quality</p>
               <div class="arch-row arch-row-3">
                 <div class="arch-node">
-                  <strong>React + Vite + Tailwind</strong>
-                  <span>Desktop-first · React Router</span>
+                  <strong>Web app</strong>
+                  <span>Desktop-first · works on phone</span>
                 </div>
                 <div class="arch-node">
-                  <strong>Cloudflare Pages</strong>
-                  <span>Web + API service binding</span>
+                  <strong>Global network</strong>
+                  <span>Cloudflare · no server to maintain</span>
                 </div>
                 <div class="arch-node">
-                  <strong>Wrangler + D1 local</strong>
-                  <span>Same migrations · Seed data · Vitest</span>
+                  <strong>Automated testing</strong>
+                  <span>Quality checks before each release</span>
                 </div>
               </div>
             </div>

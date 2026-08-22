@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="ShiftBoard — local-first employee scheduling for weekly shifts, coverage, and publish workflows. React, TypeScript, and IndexedDB by Byron Baleda."
+      content="MemoFlow — cloud notes with Google sign-in, rich-text editing, notebooks, search, attachments, and offline sync on Cloudflare Workers by Byron Baleda."
     />
-    <title>ShiftBoard — Byron Baleda</title>
+    <title>MemoFlow — Byron Baleda</title>
 
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="../assets/favicon.png" type="image/png" sizes="48x48" />
@@ -15,14 +15,18 @@
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Byron Baleda" />
-    <meta property="og:title" content="ShiftBoard — Byron Baleda" />
+    <meta property="og:title" content="MemoFlow — Byron Baleda" />
     <meta
       property="og:description"
-      content="Local-first employee scheduling for weekly shifts, coverage checks, and publish workflows — React, TypeScript, and IndexedDB."
+      content="Cloud notes with Google sign-in, Tiptap rich text, notebooks and tags, FTS search, R2 attachments, and offline sync on Cloudflare Workers."
     />
     <meta
       property="og:url"
-      content="https://flowpilot-labs.github.io/byron-portfolio/projects/shiftboard.html"
+      content="https://flowpilot-labs.github.io/byron-portfolio/projects/memoflow.html"
+    />
+    <meta
+      property="og:image"
+      content="https://flowpilot-labs.github.io/byron-portfolio/assets/projects/memoflow/editor.png"
     />
 
     <script>
@@ -93,24 +97,24 @@
       <section class="section project-hero">
         <div class="container narrow">
           <p class="section-eyebrow reveal">
-            <a class="back-link" href="../index.html#work">← Selected work</a>
+            <a class="back-link" href="../index.html#work">← Featured work</a>
           </p>
-          <h1 class="project-title reveal">ShiftBoard</h1>
+          <h1 class="project-title reveal">MemoFlow</h1>
           <p class="project-summary reveal">
-            A local-first employee scheduling app for planning weekly shifts,
-            checking availability and coverage, publishing the schedule, and
-            handing it to the team — built for the web with React, TypeScript,
-            and IndexedDB.
+            A production notes app with Google sign-in, Tiptap rich-text editing,
+            notebooks and tags, full-text search, file attachments, and offline
+            sync with explicit conflict resolution — one Cloudflare Worker serves
+            the React SPA and JSON API, with D1 as canonical state and R2 for
+            attachment bytes.
           </p>
           <div class="hero-actions reveal">
             <a
               class="btn btn-primary"
-              href="https://flowpilot-labs.github.io/ShiftBoard/"
+              href="https://cloud-notes.byrzbal.workers.dev/"
               target="_blank"
               rel="noopener noreferrer"
               >Open live app</a
             >
-            <a class="btn btn-ghost" href="#demo">Demo video</a>
           </div>
         </div>
       </section>
@@ -120,10 +124,13 @@
           <h2>Problem</h2>
           <div class="prose">
             <p>
-              Growing teams often build weekly schedules in spreadsheets or chat
-              threads. Overlaps, unavailable staff, max-hour breaches, and thin
-              coverage only show up after the week is already published — and
-              fixing them means another round of messages.
+              Quick notes often end up scattered across chat threads, email, and
+              half-finished docs. You need one place to capture rich text,
+              organize by notebook or tag, find old ideas fast, and attach files —
+              without giving up privacy or reliability when the network drops.
+              Building that as a real web product means server-enforced ownership,
+              safe rich-text storage, and sync that does not silently overwrite
+              newer edits.
             </p>
           </div>
         </div>
@@ -134,16 +141,16 @@
           <h2>Solution</h2>
           <div class="prose">
             <p>
-              ShiftBoard puts the weekly roster in one focused web app. Managers
-              assign shifts on a grid, apply templates, and see conflicts and
-              coverage gaps as they work. Availability and staffing requirements
-              feed a pure scheduling engine that flags overlaps, rest-period
-              issues, and understaffed slots before publish. Employees can preview
-              their week in My Schedule, and reports summarize hours and coverage
-              for print. Built as a local-first React prototype, ShiftBoard stores
-              everything in IndexedDB so it works without a backend — with
-              export/import for backups and a white-label branding layer for demo
-              company identities.
+              MemoFlow is a calm three-column notes workspace: a sidebar for All
+              Notes, Favorites, Trash, notebooks, and tags; a searchable note
+              list; and a Tiptap editor with headings, lists, tasks, tables,
+              links, and inline images from uploaded attachments. Notes autosave
+              with optimistic concurrency — stale versions return
+              <code>409</code> instead of overwriting. Full-text search runs in
+              SQLite FTS5 on the Worker, ranked by relevance with server-generated
+              snippets. An IndexedDB read-through cache makes lists and documents
+              feel instant; an offline queue replays edits when connectivity
+              returns and surfaces conflicts for the user to resolve.
             </p>
           </div>
         </div>
@@ -154,46 +161,39 @@
           <h2>Architecture</h2>
           <div class="prose">
             <p>
-              ShiftBoard is employee scheduling software that runs in the
-              browser — managers build the weekly roster on a grid, employees can
-              preview their shifts, and everything stays on your device without
-              signing into a cloud account. Conflicts, unavailable staff, and
-              thin coverage are flagged as you assign, so problems surface before
-              the schedule is published instead of after.
+              MemoFlow is built as a modern web app you open in the browser — no
+              install required. You sign in with Google; your account and notes
+              live in the cloud, but the app is designed so each person only sees
+              their own data. The writing experience uses a full rich-text editor
+              (headings, lists, tables, images, and file attachments), and edits
+              save automatically as you work.
             </p>
             <p>
-              Templates speed up recurring weeks; reports summarize hours and
-              coverage for printing. A demo café roster loads automatically so
-              you can explore conflicts and understaffed slots right away. The
-              white-label layer lets you swap company name, colors, and fonts for
-              client demos. Export and import protect your data, and the app
-              ships as a simple hosted website — no backend to maintain.
+              Behind the scenes, everything runs on Cloudflare’s global network
+              instead of a traditional server you have to manage. That means one
+              reliable website address serves both the app and the backend, notes
+              and metadata sit in a managed database, and uploaded files are stored
+              separately so the app stays fast even with attachments. The app also
+              keeps a local copy on your device so notes open quickly and you can
+              keep working when the connection drops — when you’re back online,
+              changes sync up, and if two edits clash, you choose which version to
+              keep instead of losing work silently.
             </p>
           </div>
 
-          <figure class="arch-diagram" aria-label="ShiftBoard architecture overview">
+          <figure class="arch-diagram" aria-label="MemoFlow architecture overview">
             <div class="arch-layer">
-              <p class="arch-layer-label">What you manage</p>
+              <p class="arch-layer-label">In your browser</p>
               <div class="arch-row arch-row-2">
                 <div class="arch-node">
-                  <strong>Schedule</strong>
-                  <span>Weekly grid · templates</span>
-                  <span>Assign · publish</span>
+                  <strong>Web app</strong>
+                  <span>Sidebar · search · rich-text editor</span>
+                  <span>Headings · lists · tables · images</span>
                 </div>
                 <div class="arch-node">
-                  <strong>Coverage &amp; reports</strong>
-                  <span>Staffing matrix · hours</span>
-                  <span>Printable summaries</span>
-                </div>
-                <div class="arch-node">
-                  <strong>People</strong>
-                  <span>Employees · availability</span>
-                  <span>My schedule preview</span>
-                </div>
-                <div class="arch-node">
-                  <strong>Settings</strong>
-                  <span>Rules · export / import</span>
-                  <span>Demo reset</span>
+                  <strong>On your device</strong>
+                  <span>Fast open from a local copy</span>
+                  <span>Keep working offline · sync when back online</span>
                 </div>
               </div>
             </div>
@@ -201,26 +201,27 @@
             <div class="arch-flow" aria-hidden="true"></div>
 
             <div class="arch-layer arch-layer-accent">
-              <p class="arch-layer-label">Smart scheduling</p>
+              <p class="arch-layer-label">Secure backend</p>
               <div class="arch-node arch-node-wide">
-                <strong>Overlaps · availability · hours · rest · coverage</strong>
-                <span>Problems flagged before you publish the week</span>
+                <strong>Sign-in · notes · search · attachments</strong>
+                <span>Google sign-in · each user’s data stays private</span>
               </div>
             </div>
 
             <div class="arch-flow" aria-hidden="true"></div>
 
             <div class="arch-layer">
-              <p class="arch-layer-label">On your device</p>
+              <p class="arch-layer-label">Cloud storage</p>
               <div class="arch-row arch-row-2">
                 <div class="arch-node">
-                  <strong>Runs in the browser</strong>
-                  <span>Data stays on your device</span>
+                  <strong>Cloud database</strong>
+                  <span>Notes · notebooks · tags</span>
+                  <span>Search index · account data</span>
                 </div>
                 <div class="arch-node">
-                  <strong>Demo included</strong>
-                  <span>Sample café roster</span>
-                  <span>Explore conflicts on first visit</span>
+                  <strong>File storage</strong>
+                  <span>Uploaded attachments</span>
+                  <span>Kept separate so the app stays fast</span>
                 </div>
               </div>
             </div>
@@ -228,19 +229,19 @@
             <div class="arch-flow" aria-hidden="true"></div>
 
             <div class="arch-layer">
-              <p class="arch-layer-label">Branding · hosting</p>
+              <p class="arch-layer-label">Hosting · quality</p>
               <div class="arch-row arch-row-3">
                 <div class="arch-node">
-                  <strong>Your brand</strong>
-                  <span>Custom name · colors · fonts</span>
+                  <strong>One website</strong>
+                  <span>App and backend on the same address</span>
                 </div>
                 <div class="arch-node">
-                  <strong>Simple web hosting</strong>
-                  <span>Live demo on the public web</span>
+                  <strong>Global network</strong>
+                  <span>Cloudflare · no server to maintain</span>
                 </div>
                 <div class="arch-node">
-                  <strong>Backup &amp; restore</strong>
-                  <span>Export and import your schedules</span>
+                  <strong>Automated testing</strong>
+                  <span>Quality checks before each release</span>
                 </div>
               </div>
             </div>
@@ -255,107 +256,55 @@
             <li>React</li>
             <li>TypeScript</li>
             <li>Vite</li>
-            <li>React Router</li>
-            <li>Dexie</li>
+            <li>Tailwind CSS</li>
+            <li>Tiptap</li>
+            <li>Cloudflare Workers</li>
+            <li>Cloudflare D1</li>
+            <li>SQLite FTS5</li>
+            <li>Cloudflare R2</li>
+            <li>Google OAuth</li>
             <li>IndexedDB</li>
-            <li>Zustand</li>
             <li>Vitest</li>
-            <li>GitHub Pages</li>
+            <li>Wrangler</li>
           </ul>
         </div>
       </section>
 
       <section class="section section-alt">
         <div class="container case-block reveal">
-          <h2>Screenshots</h2>
+          <h2>Screenshot</h2>
           <p class="section-lede">
-            Dashboard alerts, weekly schedule grid, coverage matrix, and hours
-            report from the live demo (Brew &amp; Co. branding).
+            Notebooks sidebar, note list, and rich-text editor with formatting
+            toolbar, table, tags, and attachments — signed in as Byron Baleda on
+            the production app.
           </p>
           <div class="shot-grid">
             <figure class="shot">
               <img
-                src="../assets/projects/shiftboard/dashboard.png"
-                alt="ShiftBoard dashboard with weekly KPIs, today's shifts, and conflict alerts"
-                width="1280"
-                height="800"
+                src="../assets/projects/memoflow/editor.png"
+                alt="MemoFlow editor with Demo notebook selected, rich-text toolbar, headings, lists, and a three-column table in the note body"
+                width="1024"
+                height="466"
                 loading="lazy"
               />
-              <figcaption>Dashboard</figcaption>
-            </figure>
-            <figure class="shot">
-              <img
-                src="../assets/projects/shiftboard/schedule.png"
-                alt="ShiftBoard weekly schedule grid with shift chips and conflict icons"
-                width="1280"
-                height="800"
-                loading="lazy"
-              />
-              <figcaption>Schedule</figcaption>
-            </figure>
-            <figure class="shot">
-              <img
-                src="../assets/projects/shiftboard/coverage.png"
-                alt="ShiftBoard coverage matrix with covered, short, and overstaffed slots"
-                width="1280"
-                height="800"
-                loading="lazy"
-              />
-              <figcaption>Coverage</figcaption>
-            </figure>
-            <figure class="shot">
-              <img
-                src="../assets/projects/shiftboard/reports.png"
-                alt="ShiftBoard reports page with weekly summary and hours by employee"
-                width="1280"
-                height="800"
-                loading="lazy"
-              />
-              <figcaption>Reports</figcaption>
+              <figcaption>Editor · notebooks · search</figcaption>
             </figure>
           </div>
         </div>
       </section>
 
-      <section id="demo" class="section">
-        <div class="container narrow case-block reveal">
-          <h2>Demo video</h2>
-          <p class="section-lede">
-            A quick walkthrough of ShiftBoard across dashboard, schedule,
-            coverage, reports, and employees.
-          </p>
-          <div class="demo-video">
-            <video
-              controls
-              playsinline
-              preload="metadata"
-              poster="../assets/projects/shiftboard/dashboard.png"
-            >
-              <source
-                src="../assets/projects/shiftboard/ShiftBoardDemo.mp4"
-                type="video/mp4"
-              />
-              Your browser does not support embedded video.
-              <a href="../assets/projects/shiftboard/ShiftBoardDemo.mp4"
-                >Download the demo</a
-              >.
-            </video>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-alt">
+      <section class="section">
         <div class="container narrow case-block reveal">
           <h2>Live app</h2>
           <p class="section-lede">
-            Try the local-first prototype in the browser — demo data loads on
-            first visit so you can explore conflicts, coverage, and publish
-            without signing in.
+            Open the production deployment — sign in with Google to use your own
+            notebooks and notes. There is no public demo account; authentication is
+            handled entirely through Google OAuth.
           </p>
           <p>
             <a
               class="btn btn-primary"
-              href="https://flowpilot-labs.github.io/ShiftBoard/"
+              href="https://cloud-notes.byrzbal.workers.dev/"
               target="_blank"
               rel="noopener noreferrer"
               >Open live app</a

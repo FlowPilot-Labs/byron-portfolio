@@ -153,47 +153,47 @@
           <h2>Architecture</h2>
           <div class="prose">
             <p>
-              FleetPilot is a local-first Angular SPA with four role portals —
-              owner, dispatcher, driver, and customer — sharing one shipment
-              domain. Loads, drivers, vehicles, customers, documents (rate
-              confirmations, bills of lading, proofs of delivery), settlements,
-              and activity all live in the same browser store so every persona
-              sees a consistent operational picture.
+              FleetPilot is a trucking operations app that runs entirely in the
+              browser — no server setup, no IT department required. Owners,
+              dispatchers, drivers, and customers each get a focused view of the
+              same loads, documents, and delivery status, so everyone works from
+              one shared picture instead of scattered spreadsheets and chats.
             </p>
             <p>
-              Dispatchers create and assign loads, then move them on a visual
-              board with Material CDK drag-and-drop and status rules. Dexie
-              wraps IndexedDB for persistence and seeds demo personas, loads,
-              documents, and settlements on first launch — no sign-in backend
-              required. Chart.js powers owner/dispatcher dashboard metrics. The
-              app deploys to GitHub Pages; an ASP.NET Core API is reserved for
-              future sync while the prototype stays fully client-side.
+              Dispatchers build the week on a visual board with drag-and-drop,
+              attach rate confirmations and bills of lading, and track proofs of
+              delivery. Owners see dashboards and driver settlements; drivers
+              update status and upload PODs from their portal; customers follow
+              shipments without calling the office. Demo personas and sample loads
+              load on first visit so you can explore every role immediately. The
+              app is hosted as a simple website; a cloud backend can be added
+              later when multi-user sync is needed.
             </p>
           </div>
 
           <figure class="arch-diagram" aria-label="FleetPilot architecture overview">
             <div class="arch-layer">
-              <p class="arch-layer-label">Role portals</p>
+              <p class="arch-layer-label">Who uses it</p>
               <div class="arch-row arch-row-2">
                 <div class="arch-node">
                   <strong>Owner</strong>
-                  <span>Dashboard · Driver settlements</span>
-                  <span>Operational KPIs · Activity</span>
+                  <span>Dashboard · settlements</span>
+                  <span>KPIs and activity overview</span>
                 </div>
                 <div class="arch-node">
                   <strong>Dispatcher</strong>
-                  <span>Loads · Dispatch board</span>
-                  <span>Documents · Assignments</span>
+                  <span>Loads · dispatch board</span>
+                  <span>Documents · assignments</span>
                 </div>
                 <div class="arch-node">
                   <strong>Driver</strong>
-                  <span>My Loads · Documents</span>
-                  <span>POD upload · Status updates</span>
+                  <span>My loads · status updates</span>
+                  <span>Upload proof of delivery</span>
                 </div>
                 <div class="arch-node">
                   <strong>Customer</strong>
-                  <span>My Shipments · Documents</span>
-                  <span>Delivery visibility</span>
+                  <span>My shipments</span>
+                  <span>Delivery visibility · documents</span>
                 </div>
               </div>
             </div>
@@ -201,28 +201,26 @@
             <div class="arch-flow" aria-hidden="true"></div>
 
             <div class="arch-layer arch-layer-accent">
-              <p class="arch-layer-label">Shared product domain</p>
+              <p class="arch-layer-label">Shared operations</p>
               <div class="arch-node arch-node-wide">
-                <strong>Loads · Drivers · Vehicles · Customers</strong>
-                <span
-                  >Documents (RC · BOL · POD) · Settlements · Activity ·
-                  Users</span
-                >
+                <strong>Loads · drivers · vehicles · customers</strong>
+                <span>Documents · settlements · activity history</span>
               </div>
             </div>
 
             <div class="arch-flow" aria-hidden="true"></div>
 
             <div class="arch-layer">
-              <p class="arch-layer-label">Local-first storage</p>
+              <p class="arch-layer-label">On your device</p>
               <div class="arch-row arch-row-2">
                 <div class="arch-node">
-                  <strong>Dexie</strong>
-                  <span>IndexedDB in the browser</span>
+                  <strong>Runs in the browser</strong>
+                  <span>No install · data stays local</span>
                 </div>
                 <div class="arch-node">
-                  <strong>Demo seed</strong>
-                  <span>Personas, loads, docs, settlements</span>
+                  <strong>Demo included</strong>
+                  <span>Sample loads and personas</span>
+                  <span>Try every role on first visit</span>
                 </div>
               </div>
             </div>
@@ -230,19 +228,19 @@
             <div class="arch-flow" aria-hidden="true"></div>
 
             <div class="arch-layer">
-              <p class="arch-layer-label">Shell · Delivery · Planned</p>
+              <p class="arch-layer-label">Hosting · quality · future</p>
               <div class="arch-row arch-row-3">
                 <div class="arch-node">
-                  <strong>Angular Material</strong>
-                  <span>Shell · CDK drag-and-drop · Charts</span>
+                  <strong>Visual tools</strong>
+                  <span>Drag-and-drop board · charts</span>
                 </div>
                 <div class="arch-node">
-                  <strong>GitHub Pages</strong>
-                  <span>angular-cli-ghpages deploy</span>
+                  <strong>Simple web hosting</strong>
+                  <span>Live demo on the public web</span>
                 </div>
                 <div class="arch-node arch-node-muted">
-                  <strong>ASP.NET Core API</strong>
-                  <span>Future sync backend</span>
+                  <strong>Cloud sync (planned)</strong>
+                  <span>Multi-user backend when needed</span>
                 </div>
               </div>
             </div>

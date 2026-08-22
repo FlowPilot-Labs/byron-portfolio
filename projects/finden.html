@@ -157,35 +157,35 @@
           <h2>Architecture</h2>
           <div class="prose">
             <p>
-              FinDen is a local-first monorepo with Android and web clients that
-              share one product model. Both cover accounts, transactions,
-              transfers, spending plans, investments, goals (including FIRE),
-              bills, and settings with backup/import. Domain logic lives in each
-              client so net worth, cash flow, and plan utilization stay aligned.
+              FinDen is personal finance software you can use on your phone or in
+              the browser — same accounts, spending plans, investments, goals,
+              and bills on both. No sign-in is required to get started; your
+              numbers stay on your device by default, so day-to-day tracking
+              feels private and works without an internet connection.
             </p>
             <p>
-              Android persists with Room behind a repository/ViewModel stack; web
-              uses Zustand with localStorage. No sign-in is required for core
-              use. Shared <code>tokens.json</code> generates Android colors and
-              web CSS. Vite builds deploy to GitHub Pages via Actions. An ASP.NET
-              Core API is reserved for future sync; today everything runs
-              client-side.
+              Android and web are built as one product, not two separate apps
+              glued together — net worth, cash flow, and plan progress use the
+              same rules everywhere. You can back up and restore your data when
+              you want, and the web version is hosted as a simple website you
+              open in a tab. A cloud sync service can be added later without
+              changing how the app works today.
             </p>
           </div>
 
           <figure class="arch-diagram" aria-label="FinDen architecture overview">
             <div class="arch-layer">
-              <p class="arch-layer-label">Clients</p>
+              <p class="arch-layer-label">On your devices</p>
               <div class="arch-row arch-row-2">
                 <div class="arch-node">
-                  <strong>Android</strong>
-                  <span>Kotlin · Jetpack Compose · Material 3</span>
-                  <span>Navigation Compose · ViewModel</span>
+                  <strong>Android app</strong>
+                  <span>Phone and tablet</span>
+                  <span>Full finance toolkit on the go</span>
                 </div>
                 <div class="arch-node">
-                  <strong>Web</strong>
-                  <span>React 19 · TypeScript · Vite</span>
-                  <span>React Router · Zustand</span>
+                  <strong>Web app</strong>
+                  <span>Open in any browser</span>
+                  <span>Same features as the phone app</span>
                 </div>
               </div>
             </div>
@@ -193,25 +193,26 @@
             <div class="arch-flow" aria-hidden="true"></div>
 
             <div class="arch-layer arch-layer-accent">
-              <p class="arch-layer-label">Shared product domain</p>
+              <p class="arch-layer-label">What you track</p>
               <div class="arch-node arch-node-wide">
-                <strong>Accounts · Transactions · Transfers · Spending Plan</strong>
-                <span>Investments · Goals / FIRE · Bills · Settings</span>
+                <strong>Accounts · spending · investments · goals</strong>
+                <span>Bills · transfers · FIRE planning · settings</span>
               </div>
             </div>
 
             <div class="arch-flow" aria-hidden="true"></div>
 
             <div class="arch-layer">
-              <p class="arch-layer-label">Local-first storage</p>
+              <p class="arch-layer-label">On your device</p>
               <div class="arch-row arch-row-2">
                 <div class="arch-node">
-                  <strong>Room</strong>
-                  <span>SQLite on Android</span>
+                  <strong>Phone storage</strong>
+                  <span>Data stays on your Android device</span>
                 </div>
                 <div class="arch-node">
-                  <strong>localStorage</strong>
-                  <span>Browser persistence on web</span>
+                  <strong>Browser storage</strong>
+                  <span>Data stays in your browser</span>
+                  <span>Backup and import when you choose</span>
                 </div>
               </div>
             </div>
@@ -219,19 +220,19 @@
             <div class="arch-flow" aria-hidden="true"></div>
 
             <div class="arch-layer">
-              <p class="arch-layer-label">Shared design · Delivery · Planned</p>
+              <p class="arch-layer-label">Design · hosting · future</p>
               <div class="arch-row arch-row-3">
                 <div class="arch-node">
-                  <strong>Design tokens</strong>
-                  <span>tokens.json → Color.kt + tokens.css</span>
+                  <strong>Matching design</strong>
+                  <span>Same look on Android and web</span>
                 </div>
                 <div class="arch-node">
-                  <strong>GitHub Pages</strong>
-                  <span>Actions build &amp; deploy web</span>
+                  <strong>Simple web hosting</strong>
+                  <span>Live demo on the public web</span>
                 </div>
                 <div class="arch-node arch-node-muted">
-                  <strong>ASP.NET Core API</strong>
-                  <span>Future sync backend</span>
+                  <strong>Cloud sync (planned)</strong>
+                  <span>Optional sync across devices later</span>
                 </div>
               </div>
             </div>
