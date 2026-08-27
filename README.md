@@ -2,7 +2,7 @@
 
 Personal portfolio for [Byron Baleda](https://github.com/FlowPilot-Labs) — static HTML/CSS/JS on GitHub Pages.
 
-**Repo:** https://github.com/FlowPilot-Labs/byron-portfolio (private)  
+**Repo:** https://github.com/FlowPilot-Labs/byron-portfolio (public)  
 **Live:** https://flowpilot-labs.github.io/byron-portfolio/
 
 ## Structure
@@ -35,7 +35,7 @@ byron-portfolio/
 architecture, technologies, screenshots, demo video, and live app link.
 
 - Case study: [`projects/finden.html`](projects/finden.html)
-- Live app: https://flowpilot-labs.github.io/FinDen/
+- Live app: https://finden-webapp.pages.dev/
 
 **FleetPilot** — local-first trucking management prototype.
 
