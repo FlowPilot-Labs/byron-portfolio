@@ -46,7 +46,7 @@ architecture, technologies, screenshots, demo video, and live app link.
 **ShiftBoard** — local-first employee scheduling prototype.
 
 - Case study: [`projects/shiftboard.html`](projects/shiftboard.html)
-- Live app: https://flowpilot-labs.github.io/ShiftBoard/
+- Live app: https://shiftboard-app.pages.dev/
 - Demo video: [`assets/projects/shiftboard/ShiftBoardDemo.mp4`](assets/projects/shiftboard/ShiftBoardDemo.mp4)
 
 **BookPilot Rooms** — booking and room management for small Philippine accommodations.
