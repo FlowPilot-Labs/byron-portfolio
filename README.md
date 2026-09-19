@@ -40,7 +40,7 @@ architecture, technologies, screenshots, demo video, and live app link.
 **FleetPilot** — local-first trucking management prototype.
 
 - Case study: [`projects/fleetpilot.html`](projects/fleetpilot.html)
-- Live app: https://flowpilot-labs.github.io/fleetpilot/
+- Live app: https://fleetpilot.pages.dev/
 - Demo video: [`assets/projects/fleetpilot/FleetPilotDemo.mp4`](assets/projects/fleetpilot/FleetPilotDemo.mp4)
 
 **ShiftBoard** — local-first employee scheduling prototype.
