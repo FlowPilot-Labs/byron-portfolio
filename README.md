@@ -36,6 +36,7 @@ architecture, technologies, screenshots, demo video, and live app link.
 
 - Case study: [`projects/finden.html`](projects/finden.html)
 - Live app: https://finden-webapp.pages.dev/
+- Local-only (earlier web build): [`projects/finden-local.html`](projects/finden-local.html) — https://finden-old.pages.dev/
 
 **FleetPilot** — local-first trucking management prototype.
 
